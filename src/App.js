@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header.js';
 import Sheng from './components/Sheng.js';
 
 function App() {
@@ -26,10 +27,10 @@ function App() {
 
   return (
     <div className="App">
-      <Sheng />
+      <Header />
       {
         shengs.map(sheng =>
-          <div>{sheng.word}</div>
+          <Sheng sheng={sheng} />
         )
       }
     </div>

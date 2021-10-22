@@ -1,8 +1,11 @@
 
 
-var Sheng = () => {
+var Sheng = ({ sheng }) => {
     return (
-        <h1>Sheng Mtaa</h1>
+        <div>
+            <h5>{sheng.word}</h5>
+            <div>{sheng.meaning}</div>
+        </div>
     );
 }
 
