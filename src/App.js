@@ -1,40 +1,54 @@
-import { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import React, { useState, useRef, useCallback } from 'react';
 import './App.css';
 import Header from './components/Header.js';
 import Sheng from './components/Sheng.js';
 
+import useShengSearch from './useShengSearch';
+
 function App() {
-  const [shengs, setShengs] = useState([])
+  const [query, setQuery] = useState('')
+  const [pageNumber, setPageNumber] = useState(1)
 
-  useEffect(() => {
-    const getShengs = async () => {
-      const shengsFromServer = await fetchShengs();
-      setShengs(shengsFromServer.shengs);
-    }
+  const {
+    shengs,
+    hasMore,
+    loading,
+    error
+  } = useShengSearch(query, pageNumber)
 
-    getShengs();
-  }, [])
+  const observer = useRef()
+  const lastShengElementRef = useCallback(node => {
+    if (loading) return
+    if (observer.current) observer.current.disconnect()
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMore) {
+        setPageNumber(prevPageNumber => prevPageNumber + 1)
+      }
+    })
+    if (node) observer.current.observe(node)
+  }, [loading, hasMore])
 
-  const fetchShengs = async () => {
-    const res = await (await fetch(
-      "https://shengmtaa.com/api/private/shengs/", { mode: 'cors' }
-    )).json();
-    // const data = await res.json;
-    console.log(res);
-    return res;
+  function handleSearch(e) {
+    setQuery(e.target.value)
+    setPageNumber(1)
   }
 
   return (
-    <div className="App">
+    <>
       <Header />
+      <input type="text" value={query} onChange={handleSearch}></input>
       {
-        shengs.map(sheng =>
-          <Sheng sheng={sheng} />
-        )
-      }
-    </div>
-  );
+        shengs.map((sheng, index) => {
+          if (shengs.length === index + 1) {
+            return <div  ref={lastShengElementRef} key={sheng.word}><Sheng sheng={sheng} /></div>
+          } else {
+            return <div  key={sheng.word} ><Sheng sheng={sheng} /></div>
+          }
+        })}
+      <div>{loading && 'Loading...'}</div>
+      <div>{error && 'Error'}</div>
+    </>
+  )
 }
 
 export default App;
