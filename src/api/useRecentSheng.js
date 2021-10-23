@@ -1,15 +1,11 @@
+
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function useShengSearch(query, pageNumber) {
+export default function useRecentSheng({ baseUrl }) {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
-    const [shengs, setShengs] = useState([])
-    const [hasMore, setHasMore] = useState(false)
-
-    useEffect(() => {
-        setShengs([])
-    }, [query])
+    const [recentShengs, setRecentShengs] = useState([])
 
     useEffect(() => {
         setLoading(true)
@@ -17,22 +13,20 @@ export default function useShengSearch(query, pageNumber) {
         let cancel
         axios({
             method: 'GET',
-            url: 'https://shengmtaa.com/api/private/shengs?',
-            params: { search_term: query, page: pageNumber },
+            url: baseUrl + '/api/private/shengs',
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(res => {
-            setShengs(prevShengs => {
+            setRecentShengs(prevShengs => {
                 console.log(res)
                 return [...new Set([...prevShengs, ...res.data.shengs])]
             })
-            setHasMore(res.data.shengs.length > 0)
             setLoading(false)
         }).catch(e => {
             if (axios.isCancel(e)) return
             setError(true)
         })
         return () => cancel()
-    }, [query, pageNumber])
+    }, [])
 
-    return { loading, error, shengs, hasMore }
+    return { recentShengs, loading, error }
 }
