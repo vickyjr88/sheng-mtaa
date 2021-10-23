@@ -5,7 +5,7 @@ import axios from 'axios'
 export default function useRecentSheng(baseUrl) {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
-    const [recentShengs, setRecentShengs] = useState([])
+    const [recentMchongoanos, setRecentShengs] = useState([])
 
     useEffect(() => {
         setLoading(true)
@@ -13,11 +13,11 @@ export default function useRecentSheng(baseUrl) {
         let cancel
         axios({
             method: 'GET',
-            url: baseUrl + '/api/private/recentshengs',
+            url: baseUrl + '/api/private/recentmchongoanos',
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(res => {
             setRecentShengs(prevShengs => {
-                return [...new Set([...prevShengs, ...res.data.shengs])]
+                return [...new Set([...prevShengs, ...res.data.mchongoanos])]
             })
             setLoading(false)
         }).catch(e => {
@@ -27,5 +27,5 @@ export default function useRecentSheng(baseUrl) {
         return () => cancel()
     }, [])
 
-    return { recentShengs, loading, error }
+    return { recentMchongoanos, loading, error }
 }

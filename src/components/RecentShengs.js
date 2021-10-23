@@ -1,7 +1,7 @@
 import { Card } from 'react-bootstrap'
 import useRecentSheng from '../api/useRecentSheng'
 
-var RecentShengs = (baseUrl) => {
+var RecentShengs = ({ baseUrl }) => {
     const {
         recentShengs,
         loading,
@@ -9,13 +9,18 @@ var RecentShengs = (baseUrl) => {
     } = useRecentSheng(baseUrl)
 
     return (
-        recentShengs.map((sheng, index) => {
-            return <div key={index}><Card className="m-1 p-2">
-                <h5>{sheng.word}</h5>
-                <div>{sheng.meaning}</div>
-            </Card>
-            </div>
-        })
+        <>
+            <h5>Latest sheng</h5>
+            {
+                recentShengs.map((sheng, index) => {
+                    return <div key={index}><Card className="m-1 p-2">
+                        <h5>{sheng.word}</h5>
+                        <div>{sheng.meaning}</div>
+                    </Card>
+                    </div>
+                })
+            }
+        </>
     );
 }
 

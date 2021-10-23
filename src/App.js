@@ -1,10 +1,11 @@
 import React, { useState, useRef, useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Form, FormGroup, FormControl } from 'react-bootstrap'
 import './App.css';
 import Header from './components/Header';
 import Sheng from './components/Sheng';
 import RecentShengs from './components/RecentShengs';
+import RecentMchongoanos from './components/RecentMchongoanos';
 import Footer from './components/Footer';
 
 import useShengSearch from './api/useShengSearch';
@@ -12,7 +13,8 @@ import useShengSearch from './api/useShengSearch';
 function App() {
   const [query, setQuery] = useState('')
   const [pageNumber, setPageNumber] = useState(1)
-  const baseUrl = 'https://shengmtaa.com'
+  // const baseUrl = 'https://shengmtaa.com'
+  const baseUrl = 'http://localhost:5000'
 
   const {
     shengs,
@@ -42,8 +44,12 @@ function App() {
     <div className="container">
       <Header />
       <Row>
-        <Col>
-          <input type="text" className="form-control m-1" value={query} onChange={handleSearch}></input>
+        <Col md={8}>
+          <Form>
+            <FormGroup>
+              <FormControl type="text" placeholder="Search..." value={query} onChange={handleSearch} />
+            </FormGroup>
+          </Form>
           {
             shengs.map((sheng, index) => {
               if (shengs.length === index + 1) {
@@ -52,11 +58,13 @@ function App() {
                 return <div key={sheng.word} ><Sheng sheng={sheng} /></div>
               }
             })}
+
           <div>{loading && 'Loading...'}</div>
           <div>{error && 'Error'}</div>
         </Col>
-        <Col>
+        <Col md={4}>
           <RecentShengs baseUrl={baseUrl} />
+          <RecentMchongoanos baseUrl={baseUrl} />
         </Col>
       </Row>
       <Footer />
