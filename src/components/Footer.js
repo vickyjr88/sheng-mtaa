@@ -1,3 +1,5 @@
+import { Row, Col } from "react-bootstrap";
+
 const Footer = () => {
     const d = new Date();
     let year = d.getFullYear();
@@ -13,16 +15,18 @@ const Footer = () => {
                     </script>
                 </div>
             </div>
-            <div className="row mt-5">
-                <div className="col-6">
-                    &copy;{year} Vital Digital Media.
-                </div>
-                <div className="col-6">
+            <Row>
+                <Col>
                     <a href="https://twitter.com/shengmtaa?ref_src=twsrc%5Etfw" className="twitter-follow-button"
                         data-show-count="false">Follow @shengmtaa</a>
                     <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-                </div>
-            </div>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    &copy;{year} Vital Digital Media.
+                </Col>
+            </Row>
         </footer>
     )
 }

@@ -1,11 +1,15 @@
-import { Card } from 'react-bootstrap'
+import { Link } from "react-router-dom";
 
-var Sheng = ({ sheng }) => {
+var Sheng = ({ sheng, onAction }) => {
     return (
-        <Card className="m-1 p-2">
+        <div>
             <h5>{sheng.word}</h5>
-            <div>{sheng.meaning}</div>
-        </Card>
+            <div>
+                {sheng.meaning} <Link to={{
+                    pathname: `/shengs/${sheng.sliug}`,
+                }} onClick={() => {onAction(sheng)}}>Read More...</Link>
+            </div>
+        </div>
     );
 }
 

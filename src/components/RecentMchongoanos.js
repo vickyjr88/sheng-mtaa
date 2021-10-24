@@ -9,17 +9,16 @@ var RecentMchongoanos = ({ baseUrl }) => {
     } = useRecentMchongoano(baseUrl)
 
     return (
-        <>
+        <Card className="p-2 mb-2">
             <h5>Mchongoano</h5>
             {
                 recentMchongoanos.map((sheng, index) => {
-                    return <div key={index}><Card className="m-1 p-2">
-                        <div>{sheng.text}</div>
-                    </Card>
+                    return <div key={index} className="m-1 p-2">
+                        {sheng.text}
                     </div>
                 })
             }
-        </>
+        </Card>
     );
 }
 

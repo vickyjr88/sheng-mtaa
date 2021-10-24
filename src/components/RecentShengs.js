@@ -9,18 +9,17 @@ var RecentShengs = ({ baseUrl }) => {
     } = useRecentSheng(baseUrl)
 
     return (
-        <>
+        <Card className="p-2 mb-4">
             <h5>Latest sheng</h5>
             {
                 recentShengs.map((sheng, index) => {
-                    return <div key={index}><Card className="m-1 p-2">
-                        <h5>{sheng.word}</h5>
+                    return <div key={index} className="mb-1">
+                        <h6>{sheng.word}</h6>
                         <div>{sheng.meaning}</div>
-                    </Card>
                     </div>
                 })
             }
-        </>
+        </Card>
     );
 }
 
