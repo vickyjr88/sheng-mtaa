@@ -1,16 +1,13 @@
 import { Link } from "react-router-dom";
 
-var Sheng = ({ sheng }) => {
+var Mchongoano = ({ mchongoano }) => {
     return (
         <div>
-            <h5>{sheng.word}</h5>
             <div>
-                {sheng.meaning} <Link to={{
-                    pathname: `/shengs/${sheng.slug}`,
-                }}>Read More...</Link>
+                {mchongoano.text}
             </div>
         </div>
     );
 }
 
-export default Sheng;
+export default Mchongoano;
