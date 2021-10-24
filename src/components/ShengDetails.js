@@ -9,7 +9,8 @@ var ShengDetails = () => {
     const baseUrl = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_BASE_URL_LOCAL : process.env.REACT_APP_BASE_URL
     const history = useHistory()
 
-    const goBack = () => {
+    const goBack = (e) => {
+        e.preventDefault()
         history.goBack()
     }
 
