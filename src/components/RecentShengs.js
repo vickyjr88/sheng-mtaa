@@ -1,4 +1,4 @@
-import { Card } from 'react-bootstrap'
+import { Card, Spinner } from 'react-bootstrap'
 import useRecentSheng from '../api/useRecentSheng'
 
 var RecentShengs = ({ baseUrl }) => {
@@ -12,6 +12,15 @@ var RecentShengs = ({ baseUrl }) => {
         <Card className="p-2 mb-4">
             <h5>Latest sheng</h5>
             {
+                loading &&
+                <div className="d-flex justify-content-center m-4">
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                </div>
+            }
+
+            {
                 recentShengs.map((sheng, index) => {
                     return <div key={index} className="mb-1">
                         <h6>{sheng.word}</h6>
@@ -19,6 +28,7 @@ var RecentShengs = ({ baseUrl }) => {
                     </div>
                 })
             }
+            <div className="d-flex justify-content-center m-4">{error && 'Something went wrong.'}</div>
         </Card>
     );
 }

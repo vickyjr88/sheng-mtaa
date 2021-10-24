@@ -30,9 +30,10 @@ export default function useShengSearch(baseUrl, query, pageNumber) {
         }).catch(e => {
             if (axios.isCancel(e)) return
             setError(true)
+            setLoading(false)
         })
         return () => cancel()
-    }, [query, pageNumber])
+    }, [query, pageNumber, baseUrl])
 
     return { loading, error, shengs, hasMore }
 }

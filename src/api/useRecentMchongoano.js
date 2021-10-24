@@ -23,9 +23,10 @@ export default function useRecentSheng(baseUrl) {
         }).catch(e => {
             if (axios.isCancel(e)) return
             setError(true)
+            setLoading(false)
         })
         return () => cancel()
-    }, [])
+    }, [baseUrl])
 
     return { recentMchongoanos, loading, error }
 }

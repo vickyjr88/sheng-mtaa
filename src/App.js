@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Card, Row, Col, Form, FormGroup, FormControl, Container } from 'react-bootstrap'
+import { Spinner, Card, Row, Col, Form, FormGroup, FormControl, Container } from 'react-bootstrap'
 import './App.css';
 import Header from './components/Header';
 import Sheng from './components/Sheng';
@@ -15,9 +15,8 @@ import useShengSearch from './api/useShengSearch';
 function App() {
   const [query, setQuery] = useState('')
   const [pageNumber, setPageNumber] = useState(1)
-  const [currentSheng, setCurrentSheng] = useState({})
-  // const baseUrl = 'https://shengmtaa.com'
-  const baseUrl = 'http://localhost:5000'
+
+  const baseUrl = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_BASE_URL_LOCAL : process.env.REACT_APP_BASE_URL
 
   const {
     shengs,
@@ -41,10 +40,6 @@ function App() {
   function handleSearch(e) {
     setQuery(e.target.value)
     setPageNumber(1)
-  }
-
-  var onAction = (s) => {
-    setCurrentSheng(s)
   }
 
   return (
@@ -73,14 +68,21 @@ function App() {
                     {
                       shengs.map((sheng, index) => {
                         if (shengs.length === index + 1) {
-                          return <div ref={lastShengElementRef} key={sheng.word}><Sheng sheng={sheng} /></div>
+                          return <div ref={lastShengElementRef} key={sheng.word} ><Sheng sheng={sheng} /></div>
                         } else {
-                          return <div key={sheng.word} ><Sheng sheng={sheng} onAction={onAction} /></div>
+                          return <div key={sheng.word} ><Sheng  sheng={sheng}/></div>
                         }
                       })}
 
-                    <div>{loading && 'Loading...'}</div>
-                    <div>{error && 'Error'}</div>
+                    {
+                      loading &&
+                      <div className="d-flex justify-content-center m-4">
+                        <Spinner animation="border" role="status">
+                          <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                      </div>
+                    }
+                    <div className="d-flex justify-content-center m-4">{error && 'Something went wrong'}</div>
                   </Card>
                 </Col>
               </>
@@ -89,9 +91,7 @@ function App() {
           <Route path='/about'>
             <Footer />
           </Route>
-          <Route path='/shengs/:id'>
-            <ShengDetails baseUrl={baseUrl} sheng={currentSheng} />
-          </Route>
+          <Route path='/shengs/:slug' component={ShengDetails} />
           <Col md={4}>
             <RecentShengs baseUrl={baseUrl} />
             <RecentMchongoanos baseUrl={baseUrl} />
