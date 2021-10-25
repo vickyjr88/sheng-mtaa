@@ -36,7 +36,6 @@ function App() {
             <Route path='/about'>
               <About />
             </Route>
-            <Route exact path='/' component={Shengs} />
             <Route exact path='/shengs' component={Shengs} />
             <Route path='/mchongoanos' component={Mchongoanos} />
             <Route path='/shengs/:slug' component={ShengDetails} />
