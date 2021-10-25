@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Row, Col, Container, Navbar, Nav } from 'react-bootstrap'
+import { Row, Col, Container } from 'react-bootstrap'
 import './App.css';
-import Header from './components/Header';
 import RecentShengs from './components/RecentShengs';
 import ShengDetails from './components/ShengDetails';
 import RecentMchongoanos from './components/RecentMchongoanos';
@@ -10,6 +9,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Mchongoanos from './components/Mchongoanos';
 import Shengs from './components/Shengs';
+import Navigation from './components/Navigation';
+import About from './components/About';
 
 function App() {
 
@@ -18,15 +19,12 @@ function App() {
   return (
     <Router>
       <Container>
-        <Navbar>
-          <Nav>Sheng</Nav>
-          <Nav>Mchongoano</Nav>
-        </Navbar>
-        <Header />
-
-      </Container>
-      <Container>
         <Row>
+          <Col>
+            <Navigation />
+          </Col>
+        </Row>
+        <Row className='body'>
           <Col md={8}>
             <Route
               path='/'
@@ -36,16 +34,16 @@ function App() {
               )}
             />
             <Route path='/about'>
-              <Footer />
+              <About />
             </Route>
             <Route exact path='/' component={Shengs} />
             <Route exact path='/shengs' component={Shengs} />
-            <Route path='/mchongoanos' component={<Mchongoanos />} />
+            <Route path='/mchongoanos' component={Mchongoanos} />
             <Route path='/shengs/:slug' component={ShengDetails} />
           </Col>
           <Col md={4}>
-            <RecentShengs baseUrl={baseUrl} />
             <RecentMchongoanos baseUrl={baseUrl} />
+            <RecentShengs baseUrl={baseUrl} />
             <Footer />
           </Col>
         </Row>

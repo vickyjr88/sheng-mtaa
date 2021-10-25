@@ -1,5 +1,6 @@
 import { Spinner, Card } from 'react-bootstrap'
 import useRecentMchongoano from '../api/useRecentMchongoano'
+import { Link } from 'react-router-dom'
 
 var RecentMchongoanos = ({ baseUrl }) => {
     const {
@@ -22,12 +23,13 @@ var RecentMchongoanos = ({ baseUrl }) => {
 
             {
                 recentMchongoanos.map((sheng, index) => {
-                    return <div key={index} className="m-1 p-2">
+                    return <div key={index} className="mb-1">
                         {sheng.text}
                     </div>
                 })
             }
-            <div className="d-flex justify-content-center m-4">{error && 'Something went wrong.'}</div>
+            <Link to={{pathname: `/mchongoanos`}}>View More...</Link>
+            <div className="d-flex justify-content-center m-1">{error && 'Something went wrong.'}</div>
         </Card>
     );
 }

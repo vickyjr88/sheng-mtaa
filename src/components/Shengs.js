@@ -22,7 +22,7 @@ var Shengs = () => {
         if (loading) return
         if (observer.current) observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting && hasMore) {
+            if (entries[0].isIntersecting && hasMore && !error) {
                 setPageNumber(prevPageNumber => prevPageNumber + 1)
             }
         })
@@ -37,7 +37,7 @@ var Shengs = () => {
     return (
         <Card className="p-2 mb-4">
             <Row className="mb-4">
-                <Col md={8} className="offset-2">
+                <Col md={8} className="offset-md-2">
                     <Form className="">
                         <FormGroup>
                             <FormControl type="text" size="lg" placeholder="Search..." value={query} onChange={handleSearch} />

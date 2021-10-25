@@ -1,5 +1,6 @@
 import { Card, Spinner } from 'react-bootstrap'
 import useRecentSheng from '../api/useRecentSheng'
+import { Link } from 'react-router-dom'
 
 var RecentShengs = ({ baseUrl }) => {
     const {
@@ -28,7 +29,8 @@ var RecentShengs = ({ baseUrl }) => {
                     </div>
                 })
             }
-            <div className="d-flex justify-content-center m-4">{error && 'Something went wrong.'}</div>
+            <Link to={{pathname: `/shengs`}}>View More...</Link>
+            <div className="d-flex justify-content-center m-1">{error && 'Something went wrong.'}</div>
         </Card>
     );
 }

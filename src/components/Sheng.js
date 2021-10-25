@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 var Sheng = ({ sheng }) => {
     return (
         <div>
-            <h5>{sheng.word}</h5>
+            <h5><Link to={{pathname: `/shengs/${sheng.slug}`}}>{sheng.word}</Link></h5>
             <div>
-                {sheng.meaning} <Link to={{
-                    pathname: `/shengs/${sheng.slug}`,
-                }}>Read More...</Link>
+                {sheng.meaning}
             </div>
         </div>
     );
