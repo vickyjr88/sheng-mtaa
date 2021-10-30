@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Row, Col, Form, FormGroup, FormControl, Card, Spinner } from "react-bootstrap"
 import useMchongoanoSearch from '../api/useMchongoanoSearch';
+import { Link } from 'react-router-dom';
 
 var Mchongoanos = () => {
     const baseUrl = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_BASE_URL_LOCAL : process.env.REACT_APP_BASE_URL
@@ -46,9 +47,13 @@ var Mchongoanos = () => {
             {
                 mchongoanos.map((mchongoano, index) => {
                     if (mchongoanos.length === index + 1) {
-                        return <div className="mb-1" ref={lastMchongoanoElementRef} key={index} >{mchongoano.text}</div>
+                        return <div className="mb-1" ref={lastMchongoanoElementRef} key={index} >{mchongoano.text}
+                            <Link to={{ pathname: `/mchongoanos/${mchongoano.id}` }}>&nbsp;More...</Link>
+                        </div>
                     } else {
-                        return <div className="mb-1" key={index} >{mchongoano.text}</div>
+                        return <div className="mb-1" key={index} >{mchongoano.text}
+                            <Link to={{ pathname: `/mchongoanos/${mchongoano.id}` }}>&nbsp;More...</Link>
+                        </div>
                     }
                 })}
 
