@@ -1,5 +1,3 @@
-
-
 const About = () => {
     return <div>
         <h6>Mtaa ya Sheng</h6>
