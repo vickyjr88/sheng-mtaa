@@ -6,7 +6,6 @@ import ShengDetails from './components/ShengDetails';
 import RecentMchongoanos from './components/RecentMchongoanos';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 import Mchongoanos from './components/Mchongoanos';
 import Shengs from './components/Shengs';
 import Navigation from './components/Navigation';
