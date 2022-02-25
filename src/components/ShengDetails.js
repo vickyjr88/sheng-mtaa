@@ -4,6 +4,7 @@ import useSheng from "../api/useSheng";
 import { Spinner } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { useHistory } from "react-router";
+import Comments from "./Comments"
 
 var ShengDetails = () => {
     const baseUrl = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_BASE_URL_LOCAL : process.env.REACT_APP_BASE_URL
@@ -38,6 +39,9 @@ var ShengDetails = () => {
                     <h5>{sheng.word}</h5>
                     <div>
                         {sheng.meaning}
+                    </div>
+                    <div>
+                        <Comments commentable={sheng} />
                     </div>
                     <Link onClick={goBack}>Go back</Link>
                 </>
