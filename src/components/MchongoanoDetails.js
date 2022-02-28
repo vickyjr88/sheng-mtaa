@@ -1,13 +1,11 @@
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import useMchongoano from "../api/useMchongoano";
-import { Spinner } from "react-bootstrap";
-import { Col } from "react-bootstrap";
-import { useHistory } from "react-router";
+import { Spinner, Col } from "react-bootstrap";
 import Comments from "./Comments"
 
 var MchongoanoDetails = () => {
-    const baseUrl = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_BASE_URL_LOCAL : process.env.REACT_APP_BASE_URL
+    const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
     const history = useHistory()
 
     const goBack = (e) => {
