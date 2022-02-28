@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useMchongoano from "../api/useMchongoano";
 import { Spinner, Col } from "react-bootstrap";
 import Comments from "./Comments"
+import Form from "./Form";
 
 var MchongoanoDetails = () => {
     const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
@@ -36,10 +37,11 @@ var MchongoanoDetails = () => {
                 <>
                     <div>
                         {mchongoano.text}
-                    </div>
+                    </div>                    
                     <div>
                     <Comments commentable={mchongoano} />
                     </div>
+                    <Form/>
                     <Link onClick={goBack}>Go back</Link>
                 </>
             }
