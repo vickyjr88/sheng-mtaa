@@ -54,7 +54,7 @@ var ShengDetails = () => {
                         <Comments params={commentsParams} />
                     </div>
                     <CommentForm params={shengParams} />
-                    <Link onClick={goBack}>Go back</Link>
+                    <Link to="" onClick={goBack}>Go back</Link>
                 </>
             }
             <div className="d-flex justify-content-center m-4">{error && 'Something went wrong.'}</div>

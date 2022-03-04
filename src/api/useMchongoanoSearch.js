@@ -11,6 +11,8 @@ export default function useMchongoanoSearch(baseUrl, query, pageNumber) {
         setMchongoanos([])
     }, [query])
 
+    const count = 20;
+
     useEffect(() => {
         setLoading(true)
         setError(false)
@@ -18,14 +20,17 @@ export default function useMchongoanoSearch(baseUrl, query, pageNumber) {
         axios({
             method: 'GET',
             url: baseUrl + '/api/private/mchongoanos?',
-            params: { search_term: query, page: pageNumber },
+            params: { search_term: query, 
+                      page: pageNumber,
+                      count: count
+                     },
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(res => {
             setMchongoanos(prevMchongoanos => {
                 console.log(res)
                 return [...new Set([...prevMchongoanos, ...res.data.mchongoanos])]
             })
-            setHasMore(res.data.mchongoanos.length > 0)
+            setHasMore(res.data.mchongoanos.length == count > 0)
             setLoading(false)
         }).catch(e => {
             if (axios.isCancel(e)) return

@@ -34,10 +34,10 @@ function CommentForm ({params}){
             <form onSubmit={submit}>
                 Please leave a comment:
                 <div>
-                    <textarea class="form-control" value={comment} placeholder="comment here"
+                    <textarea className="form-control" value={comment} placeholder="comment here"
                         onChange={(e) => setComment(e.target.value)}/>
                 </div>
-                <button class="btn-primary" type="submit">submit</button>
+                <button className="btn-primary" type="submit">submit</button>
             </form>
 
         )
