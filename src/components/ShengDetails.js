@@ -29,6 +29,11 @@ var ShengDetails = () => {
         commentableType: "Sheng"
     }
 
+    const commentsParams = {
+        commentable: sheng, 
+        commentableType: "Sheng"
+    }
+
     return (
         <Col md={8}>
             {
@@ -46,7 +51,7 @@ var ShengDetails = () => {
                         {sheng.meaning}
                     </div>
                     <div>
-                        <Comments commentable={sheng} />
+                        <Comments params={commentsParams} />
                     </div>
                     <CommentForm params={shengParams} />
                     <Link onClick={goBack}>Go back</Link>

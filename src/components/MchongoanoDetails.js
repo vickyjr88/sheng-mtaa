@@ -28,6 +28,10 @@ var MchongoanoDetails = () => {
         baseUrl: baseUrl, 
         commentableType: "Mchongoano"
     }
+    const commentsParams = {
+        commentable: mchongoano, 
+        commentableType: "Mchongoano"
+    }
 
     return (
         <Col md={8}>
@@ -45,7 +49,7 @@ var MchongoanoDetails = () => {
                         {mchongoano.text}
                     </div>                    
                     <div>
-                    <Comments commentable={mchongoano} />
+                        <Comments params={commentsParams} />
                     </div>
                     <CommentForm params={mchongoanoParams} />
                     <Link onClick={goBack}>Go back</Link>

@@ -1,5 +1,5 @@
-import React, {useState } from "react";
-import Axios from "axios";
+import React, {useState } from "react"
+import Axios from "axios"
 
 function CommentForm ({params}){
     console.log(params)
@@ -10,12 +10,12 @@ function CommentForm ({params}){
         } = params
 
     const url = baseUrl + "/api/private/comments"
-    const [comment, setComment] = useState('');
+    const [comment, setComment] = useState('')
 
     
 
     function submit (e) {
-        e.preventDefault();
+        e.preventDefault()
 
         Axios
         .post(url, {
@@ -28,19 +28,19 @@ function CommentForm ({params}){
         })
         .then(res => {
             console.log(res.comment)
-        });
-    };
+        })
+    }
         return (
             <form onSubmit={submit}>
                 Please leave a comment:
-                <div className="form">
-                    <textarea value={comment} placeholder="comment here"
+                <div>
+                    <textarea class="form-control" value={comment} placeholder="comment here"
                         onChange={(e) => setComment(e.target.value)}/>
                 </div>
-                <button type="submit">submit</button>
+                <button class="btn-primary" type="submit">submit</button>
             </form>
 
         )
-    };
+    }
 
 export default CommentForm
