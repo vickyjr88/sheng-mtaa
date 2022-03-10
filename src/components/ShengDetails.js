@@ -4,6 +4,7 @@ import useSheng from "../api/useSheng";
 import { Spinner } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { useHistory } from "react-router";
+import Like from "./like";
 
 var ShengDetails = () => {
     const baseUrl = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_BASE_URL_LOCAL : process.env.REACT_APP_BASE_URL
@@ -43,7 +44,10 @@ var ShengDetails = () => {
                 </>
             }
             <div className="d-flex justify-content-center m-4">{error && 'Something went wrong.'}</div>
+       <Like/>
         </Col>
+        
+    
     );
 }
 
