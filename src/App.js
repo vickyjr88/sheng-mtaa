@@ -12,6 +12,7 @@ import Shengs from './components/Shengs';
 import Navigation from './components/Navigation';
 import About from './components/About';
 import MchongoanoDetails from './components/MchongoanoDetails';
+import Login from './components/login/Login';
 
 function App() {
 
@@ -37,10 +38,14 @@ function App() {
             <Route path='/about'>
               <About />
             </Route>
+            <Route path='/login/login'>  
+              <Login />
+            </Route>
             <Route exact path='/shengs' component={Shengs} />
             <Route exact path='/mchongoanos' component={Mchongoanos} />
             <Route path='/shengs/:slug' component={ShengDetails} />
             <Route path='/mchongoanos/:id' component={MchongoanoDetails} />
+              
           </Col>
           <Col md={4}>
             <RecentMchongoanos baseUrl={baseUrl} />
