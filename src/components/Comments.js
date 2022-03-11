@@ -35,7 +35,7 @@ var Comments = ({params}) => {
             }
         })
         if (node) observer.current.observe(node)
-    }, [loading, hasMore])
+    }, [loading, hasMore, error])
 
     return (
         <Card className="p-2 mb-4">
