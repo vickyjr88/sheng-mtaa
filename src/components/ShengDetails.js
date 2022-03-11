@@ -1,12 +1,12 @@
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import useSheng from "../api/useSheng";
-import { Spinner } from "react-bootstrap";
-import { Col } from "react-bootstrap";
-import { useHistory } from "react-router";
+import { Spinner, Col } from "react-bootstrap";
+import Comments from "./Comments"
+import Form from "./Form";
 
 var ShengDetails = () => {
-    const baseUrl = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_BASE_URL_LOCAL : process.env.REACT_APP_BASE_URL
+    const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
     const history = useHistory()
 
     const goBack = (e) => {
@@ -39,6 +39,10 @@ var ShengDetails = () => {
                     <div>
                         {sheng.meaning}
                     </div>
+                    <div>
+                        <Comments commentable={sheng} />
+                    </div>
+                    <Form/>
                     <Link onClick={goBack}>Go back</Link>
                 </>
             }
