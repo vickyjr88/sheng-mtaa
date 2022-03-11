@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import Register from "./Register"
 
 const SignIn = () => {
     const userRef = useRef()
