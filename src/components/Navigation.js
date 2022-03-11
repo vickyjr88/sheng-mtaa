@@ -11,7 +11,7 @@ const Navigation = () => {
                         <Nav.Link href='/'>Sheng</Nav.Link>
                         <Nav.Link href='/about'>About</Nav.Link>
                         <Nav.Link href='/mchongoanos'>Mchongoano</Nav.Link>
-                        <Nav.Link href='/login/login'>Login</Nav.Link>
+                        <Nav.Link href='/login/Login'>Login</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
