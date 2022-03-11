@@ -15,7 +15,7 @@ import MchongoanoDetails from './components/MchongoanoDetails';
 
 function App() {
 
-  const baseUrl = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_BASE_URL_LOCAL : process.env.REACT_APP_BASE_URL
+  const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
 
   return (
     <Router>
