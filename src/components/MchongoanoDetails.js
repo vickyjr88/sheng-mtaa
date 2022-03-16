@@ -4,7 +4,7 @@ import useMchongoano from "../api/useMchongoano";
 import { Spinner } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { useHistory } from "react-router";
-import Like from "./like";
+import Like from "./Like";
 
 
 var MchongoanoDetails = () => {
