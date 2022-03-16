@@ -1,20 +1,12 @@
-function Like () {
-    state = {
-        Like:0
-    };
+import React, { useState } from "react"
 
-    addLike = () => {
-        let newCount = this.state.likes + 1;
-          this.setState({
-          likes: newCount
-        });
-      };
+var Like = () => {
+  const [count, setCount] = useState(0)
 
     return (
-        <button onClick={this.addLike} id={this.prop.iteamId}>Likes: {this.state.likes} </button>
+        <button onClick={() => setCount(count + 1)}>Likes: {count}</button>
     
- 
-    ) 
+  ) 
      
 }
 export default Like 
