@@ -1,9 +1,9 @@
 function Like () {
-    state = {
+ state = {
         Like:0
     };
 
-    addLike = () => {
+   addLike = () => {
         let newCount = this.state.likes + 1;
           this.setState({
           likes: newCount
