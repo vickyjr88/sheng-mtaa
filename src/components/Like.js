@@ -18,7 +18,7 @@ var Like = ({params}) => {
         axios
         .post(url, {
             like: {
-                user_id: 1, 
+                user_id: 2, 
                 likeable_id: id, 
                 likeable_type: actionableType
             }

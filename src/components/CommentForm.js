@@ -6,7 +6,7 @@ function CommentForm ({params}){
     const {
         id,
         baseUrl, 
-        commentableType
+        actionableType
         } = params
 
     const url = baseUrl + "/api/private/comments"
@@ -23,7 +23,7 @@ function CommentForm ({params}){
                 text: comment, 
                 user_id: 1, 
                 commentable_id: id, 
-                commentable_type: commentableType
+                commentable_type: actionableType
             }
         })
         .then(res => {
