@@ -1,34 +1,36 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
 
-var Like = () => { 
-    const [count, setCount] = useState(0)
+var Like = ({params}) => { 
+    console.log(params)
+    const {
+        id,
+        baseUrl, 
+        actionableType
+        } = params
 
-    useEffect(() =>
-      axios.post('/api/private/likes')
-          .then(res => {
-              console.log(res)
-              
-              })
-          .catch(err => {
-              console.log(err)
-             })
-          )
-  
-    useEffect(() =>
-      axios.get('/api/private/likes')
-          .then(res => {
-              console.log(res)
-              setCount(res.data)
-              })
-          .catch(err => {
-              console.log(err)
-             })
-          )
+    const url = baseUrl + "/api/private/likes"
+    const [like, setLike] = useState('')
+
+    function submit (e) {
+        e.preventDefault()
+
+        axios
+        .post(url, {
+            like: {
+                user_id: 1, 
+                likeable_id: id, 
+                likeable_type: actionableType
+            }
+        })
+        .then(res => {
+            console.log(res.like)
+        })
+    }
   return ( 
         <>
-        <button onClick={() => setCount(count +1)}>Like</button>
-        { count }
+        <button onClick={submit}>Like</button>
+        { like }
         </>
   )
 }

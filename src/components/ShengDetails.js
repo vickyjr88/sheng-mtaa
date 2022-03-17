@@ -28,7 +28,7 @@ var ShengDetails = () => {
     const shengParams = {
         id: sheng.id, 
         baseUrl: baseUrl, 
-        actinableType: "Sheng"
+        actionableType: "Sheng"
     }
 
     const commentsParams = {
