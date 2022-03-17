@@ -5,6 +5,7 @@ import { Spinner } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import Like  from "./Like";
 import Comments from "./Comments"
+import CommentForm from "./CommentForm";
 
 var ShengDetails = () => {
     const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
@@ -24,6 +25,17 @@ var ShengDetails = () => {
         error
     } = useSheng(baseUrl, params.slug)
 
+    const shengParams = {
+        id: sheng.id, 
+        baseUrl: baseUrl, 
+        commentableType: "Sheng"
+    }
+
+    const commentsParams = {
+        commentable: sheng, 
+        commentableType: "Sheng"
+    }
+
     return (
         <Col md={8}>
             {
@@ -41,10 +53,10 @@ var ShengDetails = () => {
                         {sheng.meaning}
                     </div>
                     <div>
-                        <Comments commentable={sheng} />
+                        <Comments params={commentsParams} />
                     </div>
-                    <Form/>
-                    <Link onClick={goBack}>Go back</Link>
+                    <CommentForm params={shengParams} />
+                    <Link to="" onClick={goBack}>Go back</Link>
                 </>
             }
             <div className="d-flex justify-content-center m-4">{error && 'Something went wrong.'}</div>

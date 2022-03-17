@@ -11,6 +11,8 @@ export default function useShengSearch(baseUrl, query, pageNumber) {
         setShengs([])
     }, [query])
 
+    const count = 20;
+
     useEffect(() => {
         setLoading(true)
         setError(false)
@@ -18,14 +20,14 @@ export default function useShengSearch(baseUrl, query, pageNumber) {
         axios({
             method: 'GET',
             url: baseUrl + '/api/private/shengs?',
-            params: { search_term: query, page: pageNumber },
+            params: { search_term: query, page: pageNumber, count: count },
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(res => {
             setShengs(prevShengs => {
                 console.log(res)
                 return [...new Set([...prevShengs, ...res.data.shengs])]
             })
-            setHasMore(res.data.shengs.length > 0)
+            setHasMore(res.data.shengs.length == count > 0)
             setLoading(false)
         }).catch(e => {
             if (axios.isCancel(e)) return
