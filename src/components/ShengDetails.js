@@ -1,16 +1,10 @@
 import { useParams, useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import useSheng from "../api/useSheng";
-<<<<<<< HEAD
 import { Spinner } from "react-bootstrap";
 import { Col } from "react-bootstrap";
-import { useHistory } from "react-router";
 import Like  from "./Like";
-=======
-import { Spinner, Col } from "react-bootstrap";
 import Comments from "./Comments"
-import Form from "./Form";
->>>>>>> 7c97c087b7d5866fe8301ebb391dc70d2bf66a34
 
 var ShengDetails = () => {
     const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL

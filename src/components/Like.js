@@ -25,18 +25,11 @@ var Like = () => {
               console.log(err)
              })
           )
-
-
   return ( 
         <>
-
         <button onClick={() => setCount(count +1)}>Like</button>
-        
-        <button> { count } </button>
-
+        { count }
         </>
-
-    
   )
 }
 export default Like
