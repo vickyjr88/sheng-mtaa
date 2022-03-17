@@ -1,21 +1,20 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { Row, Col, Form, FormGroup, FormControl, Card, Spinner } from "react-bootstrap"
-import Sheng from "./Sheng"
-import useShengSearch from '../api/useShengSearch';
+import { Card, Spinner } from "react-bootstrap"
+import Comment from "./Comment"
+import useComments from '../api/useComments';
 
 
-var Shengs = () => {
+var Comments = ({commentable}) => {
     const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
 
-    const [query, setQuery] = useState('')
     const [pageNumber, setPageNumber] = useState(1)
 
     const {
-        shengs,
+        comments,
         hasMore,
         loading,
         error
-    } = useShengSearch(baseUrl, query, pageNumber)
+    } = useComments(baseUrl, commentable.id, pageNumber)
 
     const observer = useRef()
     const lastShengElementRef = useCallback(node => {
@@ -29,28 +28,14 @@ var Shengs = () => {
         if (node) observer.current.observe(node)
     }, [loading, hasMore])
 
-    function handleSearch(e) {
-        setQuery(e.target.value)
-        setPageNumber(1)
-    }
-
     return (
         <Card className="p-2 mb-4">
-            <Row className="mb-4">
-                <Col md={8} className="offset-md-2">
-                    <Form className="">
-                        <FormGroup>
-                            <FormControl type="text" size="lg" placeholder="Search..." value={query} onChange={handleSearch} />
-                        </FormGroup>
-                    </Form>
-                </Col>
-            </Row>
             {
-                shengs.map((sheng, index) => {
-                    if (shengs.length === index + 1) {
-                        return <div ref={lastShengElementRef} key={sheng.word} ><Sheng sheng={sheng} /></div>
+                comments.map((comment, index) => {
+                    if (comments.length === index + 1) {
+                        return <div ref={lastShengElementRef} key={comment.text} ><Comment comment={comment} /></div>
                     } else {
-                        return <div key={sheng.word} ><Sheng sheng={sheng} /></div>
+                        return <div key={comment.text} ><Comment comment={comment} /></div>
                     }
                 })}
 
@@ -67,4 +52,4 @@ var Shengs = () => {
     )
 }
 
-export default Shengs
+export default Comments

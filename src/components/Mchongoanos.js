@@ -4,7 +4,7 @@ import useMchongoanoSearch from '../api/useMchongoanoSearch';
 import { Link } from 'react-router-dom';
 
 var Mchongoanos = () => {
-    const baseUrl = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_BASE_URL_LOCAL : process.env.REACT_APP_BASE_URL
+    const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
 
     const [query, setQuery] = useState('')
     const [pageNumber, setPageNumber] = useState(1)
