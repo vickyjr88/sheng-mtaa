@@ -26,8 +26,8 @@ var MchongoanoDetails = () => {
 
     const mchongoanoParams = {
         id: mchongoano.id, 
-        baseUrl: baseUrl, 
-        commentableType: "Mchongoano"
+        baseUrl: baseUrl,
+        actionableType: "Mchongoano"
     }
     const commentsParams = {
         commentable: mchongoano, 
@@ -57,7 +57,7 @@ var MchongoanoDetails = () => {
                 </>
             }
             <div className="d-flex justify-content-center m-4">{error && 'Something went wrong.'}</div>
-       <Like/>
+       <Like params={mchongoanoParams}/>
         </Col>
         
     );

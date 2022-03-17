@@ -28,7 +28,7 @@ var ShengDetails = () => {
     const shengParams = {
         id: sheng.id, 
         baseUrl: baseUrl, 
-        commentableType: "Sheng"
+        actinableType: "Sheng"
     }
 
     const commentsParams = {
@@ -61,7 +61,7 @@ var ShengDetails = () => {
             }
             <div className="d-flex justify-content-center m-4">{error && 'Something went wrong.'}</div>
        
-    <Like/>
+    <Like params={shengParams}  />
         </Col>
     );
 }
