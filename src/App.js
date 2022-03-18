@@ -12,7 +12,8 @@ import Shengs from './components/Shengs';
 import Navigation from './components/Navigation';
 import About from './components/About';
 import MchongoanoDetails from './components/MchongoanoDetails';
-import Login from './components/login/Login';
+import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
 
@@ -38,8 +39,11 @@ function App() {
             <Route path='/about'>
               <About />
             </Route>
-            <Route path='/login/login'>  
+            <Route path='/login'>  
               <Login />
+            </Route>
+            <Route path='/register'>  
+              <Register />
             </Route>
             <Route exact path='/shengs' component={Shengs} />
             <Route exact path='/mchongoanos' component={Mchongoanos} />
