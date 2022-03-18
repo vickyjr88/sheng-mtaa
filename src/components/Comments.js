@@ -4,17 +4,26 @@ import Comment from "./Comment"
 import useComments from '../api/useComments';
 
 
-var Comments = ({commentable}) => {
+var Comments = ({params}) => {
     const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
 
     const [pageNumber, setPageNumber] = useState(1)
+
+    const {commentable, commentableType} = params
+
+    const useCommentsParams = {
+        baseUrl: baseUrl, 
+        commentableId: commentable.id, 
+        pageNumber: pageNumber, 
+        commentableType: commentableType
+    }
 
     const {
         comments,
         hasMore,
         loading,
         error
-    } = useComments(baseUrl, commentable.id, pageNumber)
+    } = useComments({params: useCommentsParams})
 
     const observer = useRef()
     const lastShengElementRef = useCallback(node => {
@@ -33,9 +42,9 @@ var Comments = ({commentable}) => {
             {
                 comments.map((comment, index) => {
                     if (comments.length === index + 1) {
-                        return <div ref={lastShengElementRef} key={comment.text} ><Comment comment={comment} /></div>
+                        return <div ref={lastShengElementRef} key={comment.id} ><Comment comment={comment} /></div>
                     } else {
-                        return <div key={comment.text} ><Comment comment={comment} /></div>
+                        return <div key={comment.id} ><Comment comment={comment} /></div>
                     }
                 })}
 
