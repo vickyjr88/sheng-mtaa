@@ -29,8 +29,7 @@ var Like = ({params}) => {
     }
   return ( 
         <>
-        <button onClick={submit}>Like</button>
-        { like }
+        <button onClick={submit}class="btn btn-outline-primary"> Like</button>
         </>
   )
 }
