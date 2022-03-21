@@ -11,23 +11,27 @@ function Login () {
     }
 
     return(<>
-        <div className="col-sm-6 offset-sm-3">
+        <form>
+        <div className="form-group">
             <h4>Login to your account</h4>
             <label> Username/ Nickname </label><br/>
-            <input type="text" id="username" onChange={(e) =>setUser(e.target.value)} placeholder="username"
+            <input class="form-control" type="text" id="username" onChange={(e) =>setUser(e.target.value)} placeholder="username"
                value={user} required/><br/>
-
-            <label> Password </label><br/>
-            <input type="password" id="password" onChange={(e) => setPassword(e.target.value)}
-               value={password} required/><br/> 
-
-            <button className="col-sm-3 offset-sm-1 btn-primary" onClick={login}>login</button>
-              <br/><br/>           
         </div>
+        <div className="form-group">
+            <label> Password </label><br/>
+            <input class="form-control" type="password" id="password" onChange={(e) => setPassword(e.target.value)}
+               value={password} required/><br/> 
+        </div> <br/>
+
+            <button className="btn btn-primary" onClick={login}>login</button>
+              <br/><br/>           
+        
+        </form>
         <div className="col-sm-6 offset-sm-3">
         <p>Need an account?</p>
-        <button className="col-sm-3 offset-sm-1 btn-primary3">
-           <a href="./Register">Register</a>
+        <button className="btn-success">
+           <a class="btn-success" href="./Register">Create New Account</a>
         </button>
     </div>
     </>
