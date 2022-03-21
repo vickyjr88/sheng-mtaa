@@ -1,9 +1,9 @@
 .App {
   text-align: center;
 }
-
 .body {
   margin-top: 70px;
+  background: linear-gradient(135deg,#a39e9e 10% ,#bbc2bb 100%);
 }
 
 .App-logo {
@@ -18,25 +18,36 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #84a8f0 10%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
-
+  color: rgb(105, 81, 136);
+}  
 .App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+  color: #46c9d365;
+  
+  
+}  
+    @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.logo-login{
+  display: block;
+  width: 100%;
+
+}
+
+.card{
+  background-color: rgb(193, 216, 178);
 }
