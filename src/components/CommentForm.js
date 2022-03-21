@@ -16,6 +16,8 @@ function CommentForm ({params}){
 
     function submit (e) {
         e.preventDefault()
+        setComment("")
+        window.location.reload()
 
         Axios
         .post(url, {
@@ -32,12 +34,12 @@ function CommentForm ({params}){
     }
         return (
             <form onSubmit={submit}>
-                Please leave a comment:
-                <div>
+                <p className="col-sm-6 offset-sm-6">Please leave a comment: </p>
+                <div className="col-sm-6 offset-sm-5">
                     <textarea className="form-control" value={comment} placeholder="comment here"
                         onChange={(e) => setComment(e.target.value)}/>
-                </div>
-                <button className="btn-primary" type="submit">submit</button>
+                </div> <br />
+                <button className="btn-primary col-sm-2 offset-sm-7" type="submit">submit</button>
             </form>
 
         )
