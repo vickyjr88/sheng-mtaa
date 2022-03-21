@@ -4,8 +4,10 @@ function Login () {
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
 
-    function login () {
-        console.preventDefault()
+    function login (e) {
+        console.log(user)
+        setPassword("")
+        setUser("")
     }
 
     return(<>
