@@ -11,29 +11,24 @@ function Login () {
     }
 
     return(<>
-        <form>
+        <form className="offset-sm-3">
         <div className="form-group">
             <h4>Login to your account</h4>
             <label> Username/ Nickname </label><br/>
             <input class="form-control" type="text" id="username" onChange={(e) =>setUser(e.target.value)} placeholder="username"
-               value={user} required/><br/>
+               value={user} required/>
         </div>
         <div className="form-group">
             <label> Password </label><br/>
             <input class="form-control" type="password" id="password" onChange={(e) => setPassword(e.target.value)}
-               value={password} required/><br/> 
+               value={password} required/>
         </div> <br/>
-
-            <button className="btn btn-primary" onClick={login}>login</button>
-              <br/><br/>           
-        
-        </form>
+            <button className="btn btn-primary" onClick={login}>login</button>       
+        </form><br/>
         <div className="col-sm-6 offset-sm-3">
         <p>Need an account?</p>
-        <button className="btn-success">
-           <a class="btn-success" href="./Register">Create New Account</a>
-        </button>
-    </div>
+        <a class="btn btn-success" href="./register" role="button">Create New Account</a>
+        </div>
     </>
     )
 

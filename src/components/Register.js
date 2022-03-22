@@ -5,7 +5,7 @@ function Register () {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [user, setUser] = useState('')
-    const [userName, setUserName] = useState ('')
+    const [email, setEmail] = useState ('')
     const [password, setPassword] = useState('')
     const url = "/api/private/users"
 
@@ -15,7 +15,6 @@ function Register () {
         axios.post(url, {
             user: {
                 first_name: firstName,
-                middle_name: userName,
                 last_name: lastName,
                 email: user,
                 password: password
@@ -28,38 +27,36 @@ function Register () {
 
     return(
         <>
-        <div className="col-sm-6 offset-sm-3">
+        <div className="offset-sm-3">
 
             <h4>Register new Account</h4>
 
               <label> First Name </label><br/>
               <input type="text" id="text" onChange={(e) =>setFirstName(e.target.value)} 
-              placeholder="First Name" value={firstName} required/><br/>
+              placeholder="First Name" value={firstName} class="form-control"/><br/>
 
               <label> Last Name </label><br/>
               <input type="text" id="text" onChange={(e) =>setLastName(e.target.value)}
-               placeholder="Last Name" value={lastName} required/><br/>
+               placeholder="Last Name" value={lastName} class="form-control"/><br/>
 
-              <label> Username/ Nickname </label><br/>
-              <input type="text" id="username" onChange={(e) =>setUserName(e.target.value)} placeholder="username"
-               value={userName} required/><br/>
+              <label> Email Address </label><br/>
+              <input type="email" id="email" onChange={(e) =>setEmail(e.target.value)} 
+              placeholder="email@example.com" value={email} required class="form-control"/><br/>
 
               <label> Password </label><br/>
               <input type="password" id="password" onChange={(e) => setPassword(e.target.value)}
-               value={password} required/><br/>
+               value={password} class="form-control"/><br/>
 
               <label> Repeat Password </label><br/>
               <input type="password" id="password" onChange={(e) => setPassword(e.target.value)}
-               value={password} required/><br/> <br/>
+               value={password} class="form-control"/><br/>
 
-              <button className="col-sm-3 offset-sm-1 btn-primary" onClick={submit}>Sign Up</button>
+              <button className="btn btn-primary" onClick={submit}>Sign Up</button>
               <br/><br/>
           </div>
           <div className="col-sm-6 offset-sm-3">
               <p>Already have an account?</p>
-              <button className="col-sm-3 offset-sm-1 btn-primary3">
-                 <a href="./Login">Login</a>
-              </button>
+              <a class="btn btn-success" href="./login" role="button">Login</a>
           </div>
           </>
     )
