@@ -1,14 +1,37 @@
+import { Axios } from "axios";
 import React, { useState, useEffect } from "react";
+import UserDetails from "./User";
 
-function Login () {
+function Login (/*{params}*/) {
+   /* console.log(params)
+    const{
+        baseUrl,
+        email,
+        password
+    } = params */
+
     const [user, setUser] = useState('')
-    const [password, setPassword] = useState('')
+    const [pwd, setPwd] = useState('')
+    /*const url = baseUrl + "/api/private/users" */
 
     function login (e) {
-        console.log(user)
-        setPassword("")
+        e.preventDefault()
         setUser("")
+        window.location.reload()     
+
+     /*   Axios
+        .post(url, {
+            user: {
+                email: email,
+                password: password
+            }
+        })
+        .then(res => {
+            console.log(res.user)
+        }) */
     }
+
+    
 
     return(<>
         <form className="offset-sm-3">
@@ -20,8 +43,8 @@ function Login () {
         </div>
         <div className="form-group">
             <label> Password </label><br/>
-            <input class="form-control" type="password" id="password" onChange={(e) => setPassword(e.target.value)}
-               value={password} required/>
+            <input class="form-control" type="password" id="password" onChange={(e) => setPwd(e.target.value)}
+               value={pwd} required/>
         </div> <br/>
             <button className="btn btn-primary" onClick={login}>login</button>       
         </form><br/>
