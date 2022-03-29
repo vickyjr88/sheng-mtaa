@@ -50,11 +50,4 @@ body{
   background-image: -webkit-radial-gradient(0, 0, 0, 10);
   padding-bottom: 200px;
 }
-nav .App-header{
-  display: inline-block;
-}
 
-.main nav {
-  text-align: center;
-  font-size: 1.1em;
-}
