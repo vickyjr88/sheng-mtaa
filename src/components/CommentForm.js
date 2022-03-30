@@ -16,6 +16,8 @@ function CommentForm ({params}){
 
     function submit (e) {
         e.preventDefault()
+        setComment("")
+        window.location.reload()
 
         Axios
         .post(url, {
