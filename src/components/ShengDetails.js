@@ -33,7 +33,7 @@ var ShengDetails = () => {
 
     const commentsParams = {
         commentable: sheng, 
-        commentableType: "Sheng"
+        actionableType: "Sheng"
     }
 
     return (

@@ -31,7 +31,7 @@ var MchongoanoDetails = () => {
     }
     const commentsParams = {
         commentable: mchongoano, 
-        commentableType: "Mchongoano"
+        actionableType: "Mchongoano"
     }
 
     return (
