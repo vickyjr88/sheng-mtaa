@@ -1,6 +1,4 @@
-import { Axios } from "axios";
-import React, { useState, useEffect } from "react";
-import UserDetails from "./User";
+import React, { useState } from "react";
 
 function Login (/*{params}*/) {
    /* console.log(params)
@@ -50,7 +48,7 @@ function Login (/*{params}*/) {
         </form><br/>
         <div className="col-sm-6 offset-sm-3">
         <p>Need an account?</p>
-        <a class="btn btn-success" href="./register" role="button">Create New Account</a>
+        <a className="btn btn-success" href="./register" role="button">Create New Account</a>
         </div>
     </>
     )
