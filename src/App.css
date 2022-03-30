@@ -46,3 +46,14 @@
   width: 100%;
 
 }
+
+.card {
+  background-color: rgb(219, 213, 213);
+  opacity: 5;
+}
+body{
+  background-color: rgb(204, 197, 197);
+  opacity:1;
+  background-image: -webkit-radial-gradient(0, 0, 0, 10);
+  padding-bottom: 200px;
+}

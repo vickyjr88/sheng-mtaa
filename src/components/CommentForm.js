@@ -34,12 +34,12 @@ function CommentForm ({params}){
     }
         return (
             <form onSubmit={submit}>
-                <p className="col-sm-6 offset-sm-6">Please leave a comment: </p>
-                <div className="col-sm-6 offset-sm-5">
+                <div className="form-group">
+                <label>Please leave a comment: </label> 
                     <textarea className="form-control" value={comment} placeholder="comment here"
-                        onChange={(e) => setComment(e.target.value)}/>
+                        onChange={(e) => setComment(e.target.value)} class="form-control"/>
                 </div> <br />
-                <button className="btn-primary col-sm-2 offset-sm-7" type="submit">submit</button>
+                <button className="btn btn-primary" type="submit">submit</button>
             </form>
 
         )
