@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import  Axios  from "axios";
 
 function Login (/*{params}*/) {
    /* console.log(params)
@@ -9,15 +10,15 @@ function Login (/*{params}*/) {
     } = params */
 
     const [user, setUser] = useState('')
-    const [pwd, setPwd] = useState('')
-    /*const url = baseUrl + "/api/private/users" */
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const url = "/api/private/users" 
 
     function login (e) {
         e.preventDefault()
         setUser("")
-        window.location.reload()     
-
-     /*   Axios
+       
+        Axios
         .post(url, {
             user: {
                 email: email,
@@ -26,7 +27,7 @@ function Login (/*{params}*/) {
         })
         .then(res => {
             console.log(res.user)
-        }) */
+        }) 
     }
 
     
@@ -35,14 +36,14 @@ function Login (/*{params}*/) {
         <form className="offset-sm-3">
         <div className="form-group">
             <h4>Login to your account</h4>
-            <label> Username/ Nickname </label><br/>
-            <input class="form-control" type="text" id="username" onChange={(e) =>setUser(e.target.value)} placeholder="username"
-               value={user} required/>
+            <label> Email Address </label><br/>
+            <input className="form-control" type="text" id="email" onChange={(e) =>setEmail(e.target.value)} 
+            placeholder="email" value={email} required/>
         </div>
         <div className="form-group">
             <label> Password </label><br/>
-            <input class="form-control" type="password" id="password" onChange={(e) => setPwd(e.target.value)}
-               value={pwd} required/>
+            <input className="form-control" type="password" id="password" onChange={(e) => setPassword(e.target.value)}
+               value={password} required/>
         </div> <br/>
             <button className="btn btn-primary" onClick={login}>login</button>       
         </form><br/>

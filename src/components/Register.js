@@ -12,13 +12,12 @@ function Register () {
 
     function submit (e) {
         e.preventDefault()
-        setUser('')
-
+        
         axios.post(url, {
             user: {
                 first_name: firstName,
                 last_name: lastName,
-                email: user,
+                email: email,
                 password: password
             }
     })
