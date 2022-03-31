@@ -8,7 +8,10 @@ var Like = ({params}) => {
         baseUrl, 
         actionableType
         } = params
-
+        
+{
+    
+}
     const url = baseUrl + "/api/private/likes"
     const [like, setLike] = useState('')
 
@@ -31,6 +34,7 @@ var Like = ({params}) => {
         <>
         <button onClick={submit}class="btn btn-outline-primary"> Like</button>
         </>
+        
   )
 }
 export default Like
