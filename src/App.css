@@ -49,10 +49,10 @@
 .card {
   background-color: #e6f3ff;
 }
-#rcorners2 {
+
+.container {
   border-radius: 25px;
   border: 2px solid #e6f3ff;
   padding: 20px; 
-  width: 200px;
-  height: 150px;  
+  
 }
