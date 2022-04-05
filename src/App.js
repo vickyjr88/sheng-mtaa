@@ -14,7 +14,6 @@ import About from './components/About';
 import MchongoanoDetails from './components/MchongoanoDetails';
 import Login from './components/Login';
 import Register from './components/Register';
-import UserDetails from './components/User';
 
 function App() {
 
@@ -39,9 +38,6 @@ function App() {
             />
             <Route path='/about'>
               <About />
-            </Route>
-            <Route path='/user'>  
-              <UserDetails />
             </Route>
             <Route path='/login'>  
               <Login />
