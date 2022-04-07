@@ -28,7 +28,7 @@ function Login (/*{params}*/) {
             }
         }, {
             headers: {
-                'Content-Type': 'application/json',
+                'content-type': 'application/json',
             }
         })
         .then(res => {
