@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import  Axios  from "axios";
 
+<body>
+    <div>class=login</div>
+</body>
 function Login (/*{params}*/) {
    /* console.log(params)
     const{
@@ -8,7 +11,7 @@ function Login (/*{params}*/) {
         email,
         password
     } = params */
-
+    
     const [user, setUser] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -48,9 +51,12 @@ function Login (/*{params}*/) {
             <button className="btn btn-primary" onClick={login}>login</button>       
         </form><br/>
         <div className="col-sm-6 offset-sm-3">
-        <p>Need an account?</p>
+        <p>Need an account? or lost your password </p>
+        <a className="btn btn-success" href="./register" role="button">forgotten password?</a>
+        <p></p>
         <a className="btn btn-success" href="./register" role="button">Create New Account</a>
         </div>
+        <div></div>
     </>
     )
 
