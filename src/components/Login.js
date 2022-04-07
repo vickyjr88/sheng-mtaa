@@ -51,7 +51,7 @@ function Login (/*{params}*/) {
             <button className="btn btn-primary" onClick={login}>login</button>       
         </form><br/>
         <div className="col-sm-6 offset-sm-3">
-        <p>Need an account? or lost your password </p>
+        <p>Need an account? or lost your password</p> <hr></hr>
         <a className="btn btn-success" href="./register" role="button">forgotten password?</a>
         <p></p>
         <a className="btn btn-success" href="./register" role="button">Create New Account</a>
