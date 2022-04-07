@@ -9,10 +9,12 @@ function Login (/*{params}*/) {
         password
     } = params */
 
+    const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
+
     const [user, setUser] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const url = "/api/private/users" 
+    const url = baseUrl + "/login" 
 
     function login (e) {
         e.preventDefault()
