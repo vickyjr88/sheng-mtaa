@@ -14,7 +14,7 @@ function Login (/*{params}*/) {
     const [user, setUser] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const url = baseUrl + "/login" 
+    const url = baseUrl + "/login.json" 
 
     function login (e) {
         e.preventDefault()
@@ -25,6 +25,10 @@ function Login (/*{params}*/) {
             user: {
                 email: email,
                 password: password
+            }
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
             }
         })
         .then(res => {
