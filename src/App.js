@@ -4,8 +4,8 @@ import './App.css';
 import RecentShengs from './components/RecentShengs';
 import ShengDetails from './components/ShengDetails';
 import RecentMchongoanos from './components/RecentMchongoanos';
-import Footer from './components/Footer';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import SideBar from './components/SideBar';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Mchongoanos from './components/Mchongoanos';
 import Shengs from './components/Shengs';
@@ -51,11 +51,7 @@ function App() {
             <Route path='/mchongoanos/:id' component={MchongoanoDetails} />
               
           </Col>
-          <Col md={4}>
-            <RecentMchongoanos baseUrl={baseUrl} />
-            <RecentShengs baseUrl={baseUrl} />
-            <Footer />
-          </Col>
+<SideBar />
         </Row>
       </Container>
     </Router>
