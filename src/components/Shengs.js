@@ -27,7 +27,7 @@ var Shengs = () => {
             }
         })
         if (node) observer.current.observe(node)
-    }, [loading, hasMore])
+    }, [loading, hasMore, error])
 
     function handleSearch(e) {
         setQuery(e.target.value)
