@@ -14,6 +14,7 @@ import About from './components/About';
 import MchongoanoDetails from './components/MchongoanoDetails';
 import Login from './components/Login';
 import SideBar from './components/SideBar';
+import { app } from './firebase-config'
 
 function App() {
 

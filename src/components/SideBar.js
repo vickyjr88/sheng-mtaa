@@ -10,7 +10,7 @@ const location = useLocation();
 
 console.log(location.pathname)
 
-if(location.pathname === '/login' || location.pathname === '/register') return null
+if(location.pathname === '/sign-in' || location.pathname === '/sign-up') return null
     
     return(
 <Col md={4}>
