@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar } from "react-bootstrap"
-import {LinkContainer} from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Navigation = () => {
     return (
@@ -17,6 +17,12 @@ const Navigation = () => {
                         </LinkContainer>
                         <LinkContainer to='/mchongoanos'>
                             <Nav.Link>Mchongoano</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='/sign-in'>
+                            <Nav.Link>Login</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='/sign-up'>
+                            <Nav.Link>Sign Up</Nav.Link>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
