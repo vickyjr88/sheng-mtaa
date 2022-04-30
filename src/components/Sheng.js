@@ -1,8 +1,13 @@
+import { Link } from "react-router-dom";
 
-
-var Sheng = () => {
+var Sheng = ({ sheng }) => {
     return (
-        <h1>Sheng Mtaa</h1>
+        <div>
+            <h5><Link to={{pathname: `/shengs/${sheng.slug}`}}>{sheng.word}</Link></h5>
+            <div>
+                {sheng.meaning}
+            </div>
+        </div>
     );
 }
 

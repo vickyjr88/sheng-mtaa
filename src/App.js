@@ -1,39 +1,51 @@
-import { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Row, Col, Container } from 'react-bootstrap'
 import './App.css';
-import Sheng from './components/Sheng.js';
+import RecentShengs from './components/RecentShengs';
+import ShengDetails from './components/ShengDetails';
+import RecentMchongoanos from './components/RecentMchongoanos';
+import Footer from './components/Footer';
+import { BrowserRouter as Router, Outlet, Route, Routes } from 'react-router-dom';
+
+import Mchongoanos from './components/Mchongoanos';
+import Shengs from './components/Shengs';
+import Navigation from './components/Navigation';
+import About from './components/About';
+import MchongoanoDetails from './components/MchongoanoDetails';
 
 function App() {
-  const [shengs, setShengs] = useState([])
 
-  useEffect(() => {
-    const getShengs = async () => {
-      const shengsFromServer = await fetchShengs();
-      setShengs(shengsFromServer.shengs);
-    }
-
-    getShengs();
-  }, [])
-
-  const fetchShengs = async () => {
-    const res = await (await fetch(
-      "https://shengmtaa.com/api/private/shengs/", { mode: 'cors' }
-    )).json();
-    // const data = await res.json;
-    console.log(res);
-    return res;
-  }
+  const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
 
   return (
-    <div className="App">
-      <Sheng />
-      {
-        shengs.map(sheng =>
-          <div>{sheng.word}</div>
-        )
-      }
-    </div>
-  );
+    <Router>
+      <Container>
+        <Row>
+          <Col>
+            <Navigation />
+          </Col>
+        </Row>
+        <Row className='body'>
+          <Col md={8}>
+            <Routes>
+            <Route path='/' element={ <Shengs /> } />
+            <Route path='/about'  element={ <About />} />
+            <Route exact path='/shengs' element={ <Shengs />} />
+            <Route exact path='/mchongoanos' element={ <Mchongoanos /> } />
+            <Route path='/shengs/:slug' element={ <ShengDetails /> } />
+            <Route path='/mchongoanos/:id' element={ <MchongoanoDetails /> } />
+            </Routes>
+            <Outlet />
+          </Col>
+          <Col md={4}>
+            <RecentMchongoanos baseUrl={baseUrl} />
+            <RecentShengs baseUrl={baseUrl} />
+            <Footer />
+          </Col>
+        </Row>
+      </Container>
+    </Router>
+  )
 }
 
 export default App;
