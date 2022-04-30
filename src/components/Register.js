@@ -62,7 +62,7 @@ function Register () {
           </div>
           <div className="col-sm-6 offset-sm-3">
               <p>Already have an account?</p>
-              <a className="btn btn-success" href="./login" role="button">Login</a>
+              <a href="/sign-in">Login</a>
           </div>
           </>
     )

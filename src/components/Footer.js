@@ -17,6 +17,13 @@ const Footer = () => {
             </div>
             <Row>
                 <Col>
+                    <a href="https://play.google.com/store/apps/details?id=net.vitaldigitalmedia.shengmchongoano">
+                     <img src="/home/ian/projects/sheng-mtaa/src/components/Img/download.jpg" alt="Download Sheng Mtaa"/>
+                    </a>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
                     <a href="https://twitter.com/shengmtaa?ref_src=twsrc%5Etfw" className="twitter-follow-button"
                         data-show-count="false">Follow @shengmtaa</a>
                     <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>

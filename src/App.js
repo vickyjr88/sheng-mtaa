@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Row, Col, Container } from 'react-bootstrap'
 import './App.css';
-import RecentShengs from './components/RecentShengs';
+import Register from './components/Register';
 import ShengDetails from './components/ShengDetails';
 import RecentMchongoanos from './components/RecentMchongoanos';
-import SideBar from './components/SideBar';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import Footer from './components/Footer';
+import { BrowserRouter as Router, Outlet, Route, Routes } from 'react-router-dom';
 
 import Mchongoanos from './components/Mchongoanos';
 import Shengs from './components/Shengs';
@@ -13,7 +13,7 @@ import Navigation from './components/Navigation';
 import About from './components/About';
 import MchongoanoDetails from './components/MchongoanoDetails';
 import Login from './components/Login';
-import Register from './components/Register';
+import SideBar from './components/SideBar';
 
 function App() {
 
@@ -29,29 +29,19 @@ function App() {
         </Row>
         <Row className='body'>
           <Col md={8}>
-            <Route
-              path='/'
-              exact
-              render={() => (
-                <Shengs />
-              )}
-            />
-            <Route path='/about'>
-              <About />
-            </Route>
-            <Route path='/login'>  
-              <Login />
-            </Route>
-            <Route path='/register'>  
-              <Register />
-            </Route>
-            <Route exact path='/shengs' component={Shengs} />
-            <Route exact path='/mchongoanos' component={Mchongoanos} />
-            <Route path='/shengs/:slug' component={ShengDetails} />
-            <Route path='/mchongoanos/:id' component={MchongoanoDetails} />
-              
+            <Routes>
+              <Route path='/' element={<Shengs />} />
+              <Route path='/about' element={<About />} />
+              <Route exact path='/shengs' element={<Shengs />} />
+              <Route exact path='/mchongoanos' element={<Mchongoanos />} />
+              <Route path='/shengs/:slug' element={<ShengDetails />} />
+              <Route path='/mchongoanos/:id' element={<MchongoanoDetails />} />
+              <Route path='/sign-in' element={<Login />} />
+              <Route path='/sign-up' element={<Register />} />
+            </Routes>
+            <Outlet />
           </Col>
-<SideBar />
+          <SideBar />
         </Row>
       </Container>
     </Router>

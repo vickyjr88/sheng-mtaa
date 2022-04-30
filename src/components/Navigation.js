@@ -1,4 +1,5 @@
 import { Container, Nav, Navbar } from "react-bootstrap"
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Navigation = () => {
     return (
@@ -8,9 +9,21 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav>
-                        <Nav.Link href='/'>Sheng</Nav.Link>
-                        <Nav.Link href='/about'>About</Nav.Link>
-                        <Nav.Link href='/mchongoanos'>Mchongoano</Nav.Link>
+                        <LinkContainer to="/">
+                            <Nav.Link>Sheng</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='/about'>
+                            <Nav.Link>About</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='/mchongoanos'>
+                            <Nav.Link>Mchongoano</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='/sign-in'>
+                            <Nav.Link>Login</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='/sign-up'>
+                            <Nav.Link>Sign Up</Nav.Link>
+                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
