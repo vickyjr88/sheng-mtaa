@@ -2,15 +2,9 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import {useNavigate} from "react-router-dom";
-import { app } from '../firebase-config'
 
-function Login(/*{params}*/) {
-    /* console.log(params)
-     const{
-         baseUrl,
-         email,
-         password
-     } = params */
+function Login() {
+
      const navigate = useNavigate();
 
     const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
@@ -18,7 +12,23 @@ function Login(/*{params}*/) {
     const [user, setUser] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const url = baseUrl + "/login.json"
+    const url = baseUrl + "/api/private/verify_firebase_token"
+
+    function firebase_login(_token){
+        Axios
+                    .post(url, {
+                            token: _token
+                    }, {
+                        headers: {
+                            'content-type': 'application/json',
+                        }
+                    })
+                    .then(res => {
+                        setUser(res.user)
+                        console.log(res.user)
+                        navigate('/')
+                    })
+    }
 
     function login(e) {
         e.preventDefault()
@@ -26,27 +36,10 @@ function Login(/*{params}*/) {
        
 
         setUser("")
-        /** 
-                Axios
-                    .post(url, {
-                        user: {
-                            email: email,
-                            password: password
-                        }
-                    }, {
-                        headers: {
-                            'content-type': 'application/json',
-                        }
-                    })
-                    .then(res => {
-                        console.log(res.user)
-                    })
-                    **/
-
         signInWithEmailAndPassword(authentication, email, password)
             .then((response) => {
-                navigate('/')
                 sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+                firebase_login(response._tokenResponse.idToken)
             }).catch((error) => {
                 console.log(error)
        })

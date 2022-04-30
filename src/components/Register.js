@@ -1,18 +1,33 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import {useNavigate} from "react-router-dom";
-import { app } from '../firebase-config'
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState({})
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
-  const url = "/api/private/users"
+  const url = baseUrl + "/api/private/verify_firebase_token"
+
+  function firebase_login(token) {
+    Axios
+      .post(url, {
+        token: token
+      }, {
+        headers: {
+          'content-type': 'application/json',
+        }
+      })
+      .then(res => {
+        setUser(res.user)
+        console.log(res.user)
+        navigate('/')
+      })
+  }
 
   function submit(e) {
     e.preventDefault()
@@ -20,23 +35,12 @@ function Register() {
 
     createUserWithEmailAndPassword(authentication, email, password)
       .then((response) => {
+        firebase_login(response._tokenResponse.refreshToken)
         sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
       }).catch((error) => {
         console.log(error)
       })
 
-
-    /* axios.post(url, {
-        user: {
-            first_name: firstName,
-            last_name: lastName,
-            email: email,
-            password: password
-        }
-})
-         .then(res => {
-             console.log(res.user)
-}) */
   }
 
   return (
