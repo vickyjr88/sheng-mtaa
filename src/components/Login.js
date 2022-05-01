@@ -45,8 +45,6 @@ function Login() {
         e.preventDefault()
         const authentication = getAuth();
 
-
-        setUser("")
         signInWithEmailAndPassword(authentication, email, password)
             .then((response) => {
                 sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
