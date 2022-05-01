@@ -19,9 +19,6 @@ const Profile = () => {
         let authToken = sessionStorage.getItem('Auth Token')
         user_fetch = sessionStorage.getItem('User')
 
-        console.log("The user")
-        console.log(user_fetch)
-
         if (!authToken || !user_fetch) {
             handleLogout()
         }
@@ -29,10 +26,21 @@ const Profile = () => {
         setUser(_user)
     }, [])
 
+console.log(user)
+
+    function getName() {
+        if (user.first_name === undefined || user.first_name === "") {
+            return user.email.split("@")[0]
+        } else {
+            return `${user.first_name} ${user.last_name}`
+        }
+    }
+
     return (
         <div>
-            Profile page
-            <p>{user.email}</p>
+            <h3>Profile</h3>
+            <p><b>Name:</b> {getName()}</p>
+            <p><b>Email:</b> {user.email}</p>
         </div>
     )
 }
