@@ -1,5 +1,5 @@
 import Axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,6 +17,18 @@ function Register() {
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
   const url = baseUrl + "/api/private/verify_firebase_token"
+
+  useEffect(() => {
+      let authToken = sessionStorage.getItem('Auth Token')
+
+      if (authToken) {
+          navigate('/profile')
+      }
+
+      if (!authToken) {
+          navigate('/sign-in')
+      }
+  }, [])
 
   function firebase_login(token) {
     Axios

@@ -21,11 +21,11 @@ const Navigation = () => {
                         <LinkContainer to="/">
                             <Nav.Link>Sheng</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to='/about'>
-                            <Nav.Link>About</Nav.Link>
-                        </LinkContainer>
                         <LinkContainer to='/mchongoanos'>
                             <Nav.Link>Mchongoano</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='/about'>
+                            <Nav.Link>About</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to='/sign-in'>
                             <Nav.Link>Login</Nav.Link>
