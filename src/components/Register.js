@@ -1,6 +1,6 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile} from 'firebase/auth'
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,6 +16,7 @@ function Register() {
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
   const url = baseUrl + "/api/private/verify_firebase_token"
+  const authentication = getAuth();
 
   useEffect(() => {
       let authToken = sessionStorage.getItem('Auth Token')
@@ -23,13 +24,23 @@ function Register() {
       if (authToken) {
           navigate('/profile')
       }
-
-      if (!authToken) {
-          navigate('/sign-in')
-      }
   }, [])
 
-  function firebase_login(token) {
+  const loginAndUpdate = async () => {
+
+    // You need to pass the authentication instance as param
+    let { user, _tokenResponse } = await signInWithEmailAndPassword(authentication, email, password)
+
+    // Passing user's object as first param and updating it
+    let res = await updateProfile(user, {
+        'displayName': `${firstName} ${lastName}`
+    })
+
+    await firebase_login(_tokenResponse.idToken)
+
+}
+
+  const firebase_login  = async (token) => {
     Axios
       .post(url, {
         token: token
@@ -46,11 +57,10 @@ function Register() {
 
   function submit(e) {
     e.preventDefault()
-    const authentication = getAuth();
 
     createUserWithEmailAndPassword(authentication, email, password)
       .then((response) => {
-        firebase_login(response._tokenResponse.refreshToken)
+        loginAndUpdate()
         sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
       }).catch((error) => {
         console.log(error)
