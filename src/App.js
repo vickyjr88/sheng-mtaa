@@ -12,6 +12,7 @@ import MchongoanoDetails from './components/MchongoanoDetails';
 import Login from './components/Login';
 import SideBar from './components/SideBar';
 import Profile from './components/Profile';
+import User from './components/User';
 import { app } from './firebase-config'
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
               <Route path='/sign-in' element={<Login />} />
               <Route path='/sign-up' element={<Register />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path='/users/:slug' element={<User />} exact />
             </Routes>
             <Outlet />
           </Col>

@@ -26,20 +26,20 @@ function Login() {
         }
     }, [])
 
-    function firebase_login(_token) {
+    const firebase_login  = (token) => {
         Axios
-            .post(url, {
-                token: _token
-            }, {
-                headers: {
-                    'content-type': 'application/json',
-                }
-            })
-            .then(res => {
-                sessionStorage.setItem('User', JSON.stringify(res.data))
-                navigate('/')
-            })
-    }
+          .post(url, {
+            token: token
+          }, {
+            headers: {
+              'content-type': 'application/json',
+            }
+          })
+          .then(res => {
+            sessionStorage.setItem('User', JSON.stringify(res.data))
+            navigate('/')
+          })
+      }
 
     function login(e) {
         e.preventDefault()
@@ -47,7 +47,7 @@ function Login() {
 
         signInWithEmailAndPassword(authentication, email, password)
             .then((response) => {
-                sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+                sessionStorage.setItem('Auth Token', response._tokenResponse.idToken)
                 firebase_login(response._tokenResponse.idToken)
             }).catch((error) => {
                 console.log(error)

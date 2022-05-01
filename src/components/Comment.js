@@ -12,7 +12,7 @@ var Comment = ({ comment }) => {
 
     return (
         <div>
-            <p><a href={`hh/${comment.user.id}`}> {getName()} </a> {comment.comment.text}</p>
+            <p><a href={`/users/${comment.user.slug}`}> {getName()} </a> {comment.comment.text}</p>
         </div>
     );
 }
