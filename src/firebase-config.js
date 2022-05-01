@@ -16,8 +16,3 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-
-console.log("API key")
-console.log(process.env.REACT_APP_API_KEY)
-console.log(process.env.REACT_APP_BASE_URL)

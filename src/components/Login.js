@@ -1,53 +1,50 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
 
-     const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
-
-    const [user, setUser] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const url = baseUrl + "/api/private/verify_firebase_token"
 
     useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')
-  
+
         if (authToken) {
             navigate('/profile')
         }
-  
+
         if (!authToken) {
             navigate('/sign-in')
         }
     }, [])
 
-    function firebase_login(_token){
+    function firebase_login(_token) {
         Axios
-                    .post(url, {
-                            token: _token
-                    }, {
-                        headers: {
-                            'content-type': 'application/json',
-                        }
-                    })
-                    .then(res => {
-                        setUser(res.user)
-                        console.log(res.user)
-                        navigate('/')
-                    })
+            .post(url, {
+                token: _token
+            }, {
+                headers: {
+                    'content-type': 'application/json',
+                }
+            })
+            .then(res => {
+                sessionStorage.setItem('User', JSON.stringify(res.data))
+                navigate('/')
+            })
     }
 
     function login(e) {
         e.preventDefault()
         const authentication = getAuth();
-       
+
 
         setUser("")
         signInWithEmailAndPassword(authentication, email, password)
@@ -56,13 +53,13 @@ function Login() {
                 firebase_login(response._tokenResponse.idToken)
             }).catch((error) => {
                 console.log(error)
-                if(error.code === 'auth/wrong-password'){
+                if (error.code === 'auth/wrong-password') {
                     toast.error('Please check the Password');
-                  }
-                  if(error.code === 'auth/user-not-found'){
+                }
+                if (error.code === 'auth/user-not-found') {
                     toast.error('Please check the Email');
-                  }
-       })
+                }
+            })
     }
 
 

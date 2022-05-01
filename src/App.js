@@ -3,10 +3,7 @@ import { Row, Col, Container } from 'react-bootstrap'
 import './App.css';
 import Register from './components/Register';
 import ShengDetails from './components/ShengDetails';
-import RecentMchongoanos from './components/RecentMchongoanos';
-import Footer from './components/Footer';
 import { BrowserRouter as Router, Outlet, Route, Routes } from 'react-router-dom';
-
 import Mchongoanos from './components/Mchongoanos';
 import Shengs from './components/Shengs';
 import Navigation from './components/Navigation';

@@ -12,7 +12,6 @@ function Register() {
   const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const [user, setUser] = useState({})
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
@@ -40,8 +39,7 @@ function Register() {
         }
       })
       .then(res => {
-        setUser(res.user)
-        console.log(res.user)
+        sessionStorage.setItem('User', JSON.stringify(res.data))
         navigate('/')
       })
   }

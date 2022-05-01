@@ -8,6 +8,7 @@ const Navigation = () => {
 
     const handleLogout = () => {
         sessionStorage.removeItem('Auth Token');
+        sessionStorage.removeItem('User');
         navigate('/sign-in')
     }
 
