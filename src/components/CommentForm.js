@@ -37,7 +37,7 @@ function CommentForm ({params}){
                 <div className="form-group">
                 <label>Please leave a comment: </label> 
                     <textarea className="form-control" value={comment} placeholder="comment here"
-                        onChange={(e) => setComment(e.target.value)} class="form-control"/>
+                        onChange={(e) => setComment(e.target.value)} />
                 </div> <br />
                 <button className="btn btn-primary" type="submit">submit</button>
             </form>

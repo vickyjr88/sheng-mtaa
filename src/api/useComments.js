@@ -21,7 +21,7 @@ export default function useComments({params}) {
         let cancel
         axios({
             method: 'GET',
-            url: baseUrl + '/api/private/comments?',
+            url: baseUrl + '/api/private/v2/comments?',
             params: { 
                 commentable_id: commentableId, 
                 page: pageNumber, 

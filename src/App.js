@@ -33,8 +33,8 @@ function App() {
               <Route path='/about' element={<About />} />
               <Route exact path='/shengs' element={<Shengs />} />
               <Route exact path='/mchongoanos' element={<Mchongoanos />} />
-              <Route path='/shengs/:slug' element={<ShengDetails />} />
-              <Route path='/mchongoanos/:id' element={<MchongoanoDetails />} />
+              <Route path='/shengs/:slug' element={<ShengDetails />} exact />
+              <Route path='/mchongoanos/:id' element={<MchongoanoDetails exact />} />
               <Route path='/sign-in' element={<Login />} />
               <Route path='/sign-up' element={<Register />} />
               <Route path='/profile' element={<Profile />} />
