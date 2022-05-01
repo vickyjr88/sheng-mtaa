@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 var Shengs = () => {
     let navigate = useNavigate();
+    
     useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')
 

@@ -1,7 +1,16 @@
 import { Container, Nav, Navbar } from "react-bootstrap"
+import React, { useState } from "react";
 import { LinkContainer } from 'react-router-bootstrap'
+import {useNavigate} from "react-router-dom";
 
 const Navigation = () => {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        sessionStorage.removeItem('Auth Token');
+        navigate('/sign-in')
+    }
+
     return (
         <Navbar collapseOnSelect fixed="top" expand="sm" bg="dark" variant="dark">
             <Container>
@@ -24,6 +33,10 @@ const Navigation = () => {
                         <LinkContainer to='/sign-up'>
                             <Nav.Link>Sign Up</Nav.Link>
                         </LinkContainer>
+
+                        <a onClick={handleLogout} className="pull-right">
+                           Log Out
+                        </a>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

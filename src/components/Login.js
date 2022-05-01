@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import {useNavigate} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
 
@@ -42,6 +44,12 @@ function Login() {
                 firebase_login(response._tokenResponse.idToken)
             }).catch((error) => {
                 console.log(error)
+                if(error.code === 'auth/wrong-password'){
+                    toast.error('Please check the Password');
+                  }
+                  if(error.code === 'auth/user-not-found'){
+                    toast.error('Please check the Email');
+                  }
        })
     }
 
@@ -67,6 +75,7 @@ function Login() {
             <p> <a href="./register">Forgot your password?</a></p>
             <p><a href="/sign-up">Sign Up</a></p>
         </div>
+        <ToastContainer />
     </>
     )
 

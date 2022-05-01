@@ -2,6 +2,8 @@ import Axios from "axios";
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
   
@@ -42,6 +44,9 @@ function Register() {
         sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
       }).catch((error) => {
         console.log(error)
+        if (error.code === 'auth/email-already-in-use') {
+          toast.error('Email Already in Use');
+        }
       })
 
   }
@@ -84,6 +89,7 @@ function Register() {
         <p>Already have an account?</p>
         <a href="/sign-in ">Login</a>
       </div>
+      <ToastContainer />
     </>
   )
 
