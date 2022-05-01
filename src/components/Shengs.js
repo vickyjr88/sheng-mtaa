@@ -1,10 +1,24 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect} from 'react';
 import { Row, Col, Form, FormGroup, FormControl, Card, Spinner } from "react-bootstrap"
 import Sheng from "./Sheng"
 import useShengSearch from '../api/useShengSearch';
+import { useNavigate } from "react-router-dom";
 
 
 var Shengs = () => {
+    let navigate = useNavigate();
+    useEffect(() => {
+        let authToken = sessionStorage.getItem('Auth Token')
+
+        if (authToken) {
+            navigate('/profile')
+        }
+
+        if (!authToken) {
+            navigate('/sign-in')
+        }
+    }, [])
+
     const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
 
     const [query, setQuery] = useState('')

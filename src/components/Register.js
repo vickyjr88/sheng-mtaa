@@ -1,10 +1,13 @@
-import axios from "axios";
+import Axios from "axios";
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from "react-router-dom";
 
 function Register() {
+  
   const navigate = useNavigate();
+
+  const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [user, setUser] = useState({})
