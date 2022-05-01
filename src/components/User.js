@@ -27,8 +27,6 @@ const User = () => {
 
     useEffect(() => {
         getToken()
-        let _name = getName(user)
-        setName(_name)
     }, [])
 
     const {
@@ -37,7 +35,15 @@ const User = () => {
         error
     } = useUser(baseUrl, slug, authToken)
 
+
+    useEffect(() => {
+        let _name = getName(user)
+        setName(_name)
+    }, [user])
+
+
     function getName(_user) {
+        if (_user.email === undefined || _user.email === "" || _user.email === null) return "-"
         if (_user.first_name === undefined || _user.first_name === "" || _user.first_name === null) {
             let str = _user.email.split("@")[0]
             return str.charAt(0).toUpperCase() + str.slice(1);
