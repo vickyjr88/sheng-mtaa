@@ -48,11 +48,11 @@
 }
 
 .card {
-  background-color: #15357a;
+  background-color: #c1cbdf;
   opacity: 5;
 }
 body{
-  background-color:  #15357a;
+  background-color:  #bfc9dd;
   opacity:1;
   background-image: -webkit-radial-gradient(0, 0, 0, 10);
   padding-bottom: 200px;
