@@ -48,7 +48,7 @@
 }
 
 .card {
-  background-color:  #12a390;
+  background-color:  #e0e9e8;
   opacity: 1;
 }
 body{background-color:transparent;
@@ -63,7 +63,7 @@ loginbox {
   background:#000
   transparent(-58N,-50);
   box-sizing: border-box;
-}  
+} 
 .loginbox input[type="subbit"] :hover
 {
   cursor: pointer;
