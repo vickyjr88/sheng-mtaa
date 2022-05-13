@@ -29,7 +29,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #d3dfe2ee;
 }
 
 @keyframes App-logo-spin {
@@ -51,14 +51,9 @@
   background-color:  #e0e9e8;
   opacity: 1;
 }
-body{background-color:transparent;
+body{background-color:#d3dfe2ee;
      opacity:1;
-  background-image: -webkit-radial-gradient(0, 0, 0, 10);
   padding-bottom: 200px;
-  background:RGBA(0, 141, 152,1.0);
-  
-    
-      
 }
 
 loginbox {
@@ -72,5 +67,5 @@ loginbox {
 {
   cursor: pointer;
   background: #fff;
-  color:  #8896b4;
+  color:  #f1f3f7;
 }
