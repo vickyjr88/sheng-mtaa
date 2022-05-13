@@ -27,7 +27,7 @@ var Like = ({params}) => {
             }
         })
         .then(res => {
-            console.log(res.like)
+            console.log(res.like)  
         })
     }
   return ( 

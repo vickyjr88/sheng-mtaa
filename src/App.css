@@ -52,10 +52,10 @@
   opacity: 1;
 }
 body{background-color:transparent;
-     opacity:1;
+  opacity:1;
   background-image: -webkit-radial-gradient(0, 0, 0, 10);
   padding-bottom: 200px;
-  background:RGBA(0, 141, 152,1.0);
+  background:#008d98;;
   
     
       
