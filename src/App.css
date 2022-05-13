@@ -29,7 +29,7 @@
 }
 
 .App-link {
-  color: #d3dfe2ee;
+  color: gray
 }
 
 @keyframes App-logo-spin {
@@ -48,10 +48,10 @@
 }
 
 .card {
-  background-color:  #e0e9e8;
+  background-color: white;
   opacity: 1;
 }
-body{background-color:#d3dfe2ee;
+body{background-color: rgb(253, 251, 251);
      opacity:1;
   padding-bottom: 200px;
 }
@@ -67,5 +67,5 @@ loginbox {
 {
   cursor: pointer;
   background: #fff;
-  color:  #f1f3f7;
+
 }
