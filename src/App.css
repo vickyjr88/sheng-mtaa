@@ -18,7 +18,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #0b0c0e;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,10 +49,12 @@
 
 .card {
   background-color: white;
-  opacity: 1;
+  opacity:1;
+  shape-margin: var(#fff);
+  shape-rendering: geometricPrecision;
 }
-body{background-color: rgb(253, 251, 251);
-     opacity:1;
+body{background-color:#F8F8FF ;
+     opacity:2;
   padding-bottom: 200px;
 }
 
