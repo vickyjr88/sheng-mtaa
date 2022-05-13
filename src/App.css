@@ -18,7 +18,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #0b0c0e;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: gray
 }
 
 @keyframes App-logo-spin {
@@ -48,17 +48,16 @@
 }
 
 .card {
-  background-color:  #e0e9e8;
-  opacity: 1;
-}
-body{background-color:transparent;
+  background-color: white;
   opacity:1;
-  background-image: -webkit-radial-gradient(0, 0, 0, 10);
-  padding-bottom: 200px;
-  background:#008d98;;
+  shape-margin: var(#fff);
+  shape-rendering: geometricPrecision;
+}
   
-    
       
+body{background-color:#F8F8FF ;
+     opacity:2;
+  padding-bottom: 200px;
 }
 
 loginbox {
@@ -72,5 +71,5 @@ loginbox {
 {
   cursor: pointer;
   background: #fff;
-  color:  #8896b4;
+
 }
