@@ -48,11 +48,11 @@
 }
 
 .card {
-  background-color: rgb(219, 213, 213);
+  background-color: #c1cbdf;
   opacity: 5;
 }
 body{
-  background-color: rgb(204, 197, 197);
+  background-color:  #bfc9dd;
   opacity:1;
   background-image: -webkit-radial-gradient(0, 0, 0, 10);
   padding-bottom: 200px;
@@ -68,5 +68,5 @@ loginbox {
 {
   cursor: pointer;
   background: #fff;
-  color: darkgrey;
+  color:  #15357a;
 }
