@@ -42,9 +42,9 @@ var Comments = ({params}) => {
             {
                 comments.map((comment, index) => {
                     if (comments.length === index + 1) {
-                        return <div ref={lastShengElementRef} key={comment.id} ><Comment comment={comment} /></div>
+                        return <div ref={lastShengElementRef} key={comment.comment.id} ><Comment comment={comment} /></div>
                     } else {
-                        return <div key={comment.id} ><Comment comment={comment} /></div>
+                        return <div key={comment.comment.id} ><Comment comment={comment} /></div>
                     }
                 })}
 

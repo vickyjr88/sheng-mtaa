@@ -1,4 +1,5 @@
-import { useParams, useHistory } from "react-router";
+import { useHistory } from "react-router";
+import { useParams } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import useSheng from "../api/useSheng";
 import { Spinner, Col } from "react-bootstrap";
@@ -14,14 +15,13 @@ var ShengDetails = () => {
         history.goBack()
     }
 
-    let params = useParams()
-    console.log(params)
+    let { slug } = useParams()
 
     const {
         sheng,
         loading,
         error
-    } = useSheng(baseUrl, params.slug)
+    } = useSheng(baseUrl, slug)
 
     const shengParams = {
         id: sheng.id, 
@@ -54,7 +54,7 @@ var ShengDetails = () => {
                         <Comments params={commentsParams} />
                     </div>
                     <CommentForm params={shengParams} />
-                    <Link to="" onClick={goBack}>Go back</Link>
+                    <a to="" onClick={goBack}>Go back</a>
                 </>
             }
             <div className="d-flex justify-content-center m-4">{error && 'Something went wrong.'}</div>
