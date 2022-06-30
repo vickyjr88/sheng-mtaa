@@ -19,7 +19,12 @@ const Footer = () => {
                 <Col>
                 Download App from:
                     <a href="https://play.google.com/store/apps/details?id=net.vitaldigitalmedia.shengmchongoano">
+<<<<<<< HEAD
                      GooglePlay</a>
+=======
+                     <img src="/home/ian/projects/sheng-mtaa/src/components/Img/download.jpg" alt="Download Sheng Mtaa"/>
+                    </a>
+>>>>>>> 06d64a0b50917c38af286240906a9f0505a2de7b
                 </Col>
             </Row>
             <Row>

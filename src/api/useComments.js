@@ -21,7 +21,7 @@ export default function useComments({params}) {
         let cancel
         axios({
             method: 'GET',
-            url: baseUrl + '/api/private/comments?',
+            url: baseUrl + '/api/private/v2/comments?',
             params: { 
                 commentable_id: commentableId, 
                 page: pageNumber, 
@@ -34,7 +34,7 @@ export default function useComments({params}) {
                 console.log(res)
                 return [...new Set([...prevComments, ...res.data.comments])]
             })
-            setHasMore(res.data.comments.length == count)
+            setHasMore(res.data.comments.length === count)
             setLoading(false)
         }).catch(e => {
             if (axios.isCancel(e)) return
@@ -42,7 +42,7 @@ export default function useComments({params}) {
             setLoading(false)
         })
         return () => cancel()
-    }, [commentableId, pageNumber, baseUrl])
+    }, [commentableId, pageNumber, baseUrl, commentableType])
 
     return { loading, error, comments, hasMore }
 }

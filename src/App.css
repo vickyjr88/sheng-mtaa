@@ -40,14 +40,33 @@
     transform: rotate(360deg);
   }
 }
+
+.logo-login{
+  display: block;
+  width: 100%;
+
+}
+
 .card {
-  background-color: rgb(219, 213, 213);
+  background-color: #c1cbdf;
   opacity: 5;
 }
 body{
-  background-color: rgb(204, 197, 197);
+  background-color:  #bfc9dd;
   opacity:1;
   background-image: -webkit-radial-gradient(0, 0, 0, 10);
   padding-bottom: 200px;
 }
-
+loginbox {
+  width: 320px;
+  height: 420 px;
+  background:#000
+  transparent(-58N,-50);
+  box-sizing: border-box;
+}  
+.loginbox input[type="subbit"] :hover
+{
+  cursor: pointer;
+  background: #fff;
+  color:  #15357a;
+}

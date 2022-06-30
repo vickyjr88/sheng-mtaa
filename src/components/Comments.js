@@ -35,16 +35,16 @@ var Comments = ({params}) => {
             }
         })
         if (node) observer.current.observe(node)
-    }, [loading, hasMore])
+    }, [loading, hasMore, error])
 
     return (
         <Card className="p-2 mb-4">
             {
                 comments.map((comment, index) => {
                     if (comments.length === index + 1) {
-                        return <div ref={lastShengElementRef} key={comment.id} ><Comment comment={comment} /></div>
+                        return <div ref={lastShengElementRef} key={comment.comment.id} ><Comment comment={comment} /></div>
                     } else {
-                        return <div key={comment.id} ><Comment comment={comment} /></div>
+                        return <div key={comment.comment.id} ><Comment comment={comment} /></div>
                     }
                 })}
 
