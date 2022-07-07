@@ -26,7 +26,7 @@ var Mchongoanos = () => {
             }
         })
         if (node) observer.current.observe(node)
-    }, [loading, hasMore])
+    }, [loading, error, hasMore])
 
     function handleSearch(e) {
         setQuery(e.target.value)
