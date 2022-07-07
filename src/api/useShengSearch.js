@@ -27,7 +27,7 @@ export default function useShengSearch(baseUrl, query, pageNumber) {
                 console.log(res)
                 return [...new Set([...prevShengs, ...res.data.shengs])]
             })
-            setHasMore(res.data.shengs.length == count > 0)
+            setHasMore(res.data.shengs.length === count === 0)
             setLoading(false)
         }).catch(e => {
             if (axios.isCancel(e)) return
