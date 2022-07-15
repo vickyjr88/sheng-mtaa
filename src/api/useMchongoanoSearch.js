@@ -30,7 +30,7 @@ export default function useMchongoanoSearch(baseUrl, query, pageNumber) {
                 console.log(res)
                 return [...new Set([...prevMchongoanos, ...res.data.mchongoanos])]
             })
-            setHasMore(res.data.mchongoanos.length == count > 0)
+            setHasMore(res.data.mchongoanos.length === count === 0)
             setLoading(false)
         }).catch(e => {
             if (axios.isCancel(e)) return
