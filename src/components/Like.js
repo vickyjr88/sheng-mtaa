@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useEffect, useState } from "react"
+import React from "react"
 
 var Like = ({params}) => { 
     console.log(params)
@@ -9,11 +9,7 @@ var Like = ({params}) => {
         actionableType
         } = params
         
-{
-    
-}
     const url = baseUrl + "/api/private/likes"
-    const [like, setLike] = useState('')
 
     function submit (e) {
         e.preventDefault()
