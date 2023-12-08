@@ -1,5 +1,6 @@
 import axios from "axios"
 import React from "react"
+import Counter from "./counter"
 
 var Like = ({params}) => { 
     console.log(params)
@@ -28,7 +29,7 @@ var Like = ({params}) => {
     }
   return ( 
         <>
-        <button onClick={submit}class="btn btn-outline-primary"> Like</button>
+        <button onClick={submit}class="btn btn-outline-primary"> Like {Counter}</button>
         </>
         
   )

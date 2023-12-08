@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Text, Button } from 'react-dom'
 
 const Counter = () => {
-   const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
+ //  const baseUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_BASE_URL : process.env.REACT_APP_BASE_URL_LOCAL
     
    const [count, setCount] = useState(0);  
 
