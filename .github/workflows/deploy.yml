@@ -51,7 +51,6 @@ jobs:
     name: Deploy to Namecheap (FTPS)
     needs: build
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - name: Download build artifact
         uses: actions/download-artifact@v4
