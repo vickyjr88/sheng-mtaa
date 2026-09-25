@@ -61,10 +61,12 @@ jobs:
       - name: Deploy over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          server: ${{ secrets.FTP_HOST }}
-          port: ${{ secrets.FTP_PORT }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          # Keep the deploy job compatible with both the newer FTP_* secret
+          # names and the older SFTP_* ones already present in the repo.
+          server: ${{ secrets.FTP_HOST || secrets.SFTP_HOST || 'ftp.dripemporium.store' }}
+          port: ${{ secrets.FTP_PORT || secrets.SFTP_PORT || '21' }}
+          username: ${{ secrets.FTP_USERNAME || secrets.SFTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD || secrets.SFTP_PASSWORD }}
           protocol: ftps
           local-dir: dist/
-          server-dir: ${{ secrets.FTP_REMOTE_PATH }}
+          server-dir: ${{ secrets.FTP_REMOTE_PATH || secrets.SFTP_REMOTE_PATH }}
