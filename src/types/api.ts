@@ -26,6 +26,16 @@ export interface Mchongoano {
   updated_at: string
 }
 
+export interface Rieng {
+  id: number
+  text: string
+  origin: string | null
+  reference: string | null
+  status: string
+  created_at: string
+  updated_at: string
+}
+
 export interface Pagination {
   count: number
   page: number
@@ -53,6 +63,15 @@ export interface RecentMchongoanosResponse {
   mchongoanos: Mchongoano[]
 }
 
+export interface RiengListResponse {
+  pagination: Pagination
+  riengs: Rieng[]
+}
+
+export interface RecentRiengsResponse {
+  riengs: Rieng[]
+}
+
 export interface CommentUser {
   id: number
   first_name: string | null
@@ -74,7 +93,7 @@ export interface CommentListResponse {
   comments: Comment[]
 }
 
-export type CommentableType = 'Sheng' | 'Mchongoano'
+export type CommentableType = 'Sheng' | 'Mchongoano' | 'Rieng'
 
 export interface AppUser {
   id: number

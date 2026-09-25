@@ -22,6 +22,9 @@ function NavLinks({ mobile = false, onNavigate }: { mobile?: boolean; onNavigate
       <NavLink to="/mchongoanos" className={linkClass} onClick={onNavigate}>
         Mchongoano
       </NavLink>
+      <NavLink to="/riengs" className={linkClass} onClick={onNavigate}>
+        Rieng
+      </NavLink>
       <NavLink to="/about" className={linkClass} onClick={onNavigate}>
         About
       </NavLink>

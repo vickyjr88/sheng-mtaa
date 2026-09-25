@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Navigation } from './Navigation'
 import { RecentMchongoanos } from './RecentMchongoanos'
+import { RecentRiengs } from './RecentRiengs'
 import { RecentShengs } from './RecentShengs'
 import { Footer } from './Footer'
 
@@ -21,6 +22,7 @@ export function Layout({ children }: { children: ReactNode }) {
             <aside className="space-y-4">
               <RecentMchongoanos />
               <RecentShengs />
+              <RecentRiengs />
               <Footer />
             </aside>
           )}

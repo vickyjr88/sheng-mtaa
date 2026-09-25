@@ -4,6 +4,8 @@ import { AboutPage } from './pages/AboutPage'
 import { MchongoanoDetailPage } from './pages/MchongoanoDetailPage'
 import { MchongoanosPage } from './pages/MchongoanosPage'
 import { ProfilePage } from './pages/ProfilePage'
+import { RiengDetailPage } from './pages/RiengDetailPage'
+import { RiengsPage } from './pages/RiengsPage'
 import { ShengDetailPage } from './pages/ShengDetailPage'
 import { ShengsPage } from './pages/ShengsPage'
 import { SignInPage } from './pages/SignInPage'
@@ -19,6 +21,8 @@ export function App() {
         <Route path="/shengs/:slug" element={<ShengDetailPage />} />
         <Route path="/mchongoanos" element={<MchongoanosPage />} />
         <Route path="/mchongoanos/:id" element={<MchongoanoDetailPage />} />
+        <Route path="/riengs" element={<RiengsPage />} />
+        <Route path="/riengs/:id" element={<RiengDetailPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
