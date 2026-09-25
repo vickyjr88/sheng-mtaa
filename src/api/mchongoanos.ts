@@ -12,6 +12,11 @@ export async function fetchMchongoanos(searchTerm: string, page: number) {
 
 export async function fetchMchongoano(id: string) {
   const { data } = await apiClient.get<Mchongoano>(`/mchongoanos/${id}`)
+  // See fetchSheng's comment: the API returns 200 with { error: "not_found" }
+  // for a missing id instead of a real 404.
+  if (!('text' in data)) {
+    throw new Error('Mchongoano not found')
+  }
   return data
 }
 

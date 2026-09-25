@@ -54,14 +54,17 @@ export function ShengDetailPage() {
             {sheng.relate
               .split(' ')
               .filter(Boolean)
-              .map((word, index) => (
-                <span key={word}>
-                  {index > 0 && ' '}
-                  <Link to={`/shengs/${word.replace(',', '').toLowerCase()}`} className="text-brand-600 hover:underline">
-                    {word}
-                  </Link>
-                </span>
-              ))}
+              .map((rawWord, index) => {
+                const word = rawWord.replace(/,/g, '')
+                return (
+                  <span key={rawWord}>
+                    {index > 0 && ' '}
+                    <Link to={`/shengs/${word.toLowerCase()}`} className="text-brand-600 hover:underline">
+                      {word}
+                    </Link>
+                  </span>
+                )
+              })}
           </p>
         )}
         <Field label="Variation" value={sheng.variation} />

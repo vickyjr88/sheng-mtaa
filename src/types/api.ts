@@ -55,10 +55,9 @@ export interface RecentMchongoanosResponse {
 
 export interface CommentUser {
   id: number
-  email: string
   first_name: string | null
   last_name: string | null
-  slug: string
+  slug: string | null
 }
 
 export interface Comment {
