@@ -51,6 +51,12 @@ jobs:
     name: Deploy to Namecheap (FTPS)
     needs: build
     runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_HOST || secrets.SFTP_HOST || 'ftp.dripemporium.store' }}
+      FTP_PORT: ${{ secrets.FTP_PORT || secrets.SFTP_PORT || '21' }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME || secrets.SFTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD || secrets.SFTP_PASSWORD }}
+      FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH || secrets.SFTP_REMOTE_PATH }}
     steps:
       - name: Download build artifact
         uses: actions/download-artifact@v4
@@ -58,15 +64,22 @@ jobs:
           name: dist
           path: dist
 
+      - name: Validate FTPS configuration
+        run: |
+          test -n "$FTP_SERVER" || { echo "::error::Missing FTP server"; exit 1; }
+          test -n "$FTP_USERNAME" || { echo "::error::Missing FTP_USERNAME or SFTP_USERNAME secret"; exit 1; }
+          test -n "$FTP_PASSWORD" || { echo "::error::Missing FTP_PASSWORD or SFTP_PASSWORD secret"; exit 1; }
+          test -n "$FTP_REMOTE_PATH" || { echo "::error::Missing FTP_REMOTE_PATH or SFTP_REMOTE_PATH secret"; exit 1; }
+
       - name: Deploy over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           # Keep the deploy job compatible with both the newer FTP_* secret
           # names and the older SFTP_* ones already present in the repo.
-          server: ${{ secrets.FTP_HOST || secrets.SFTP_HOST || 'ftp.dripemporium.store' }}
-          port: ${{ secrets.FTP_PORT || secrets.SFTP_PORT || '21' }}
-          username: ${{ secrets.FTP_USERNAME || secrets.SFTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD || secrets.SFTP_PASSWORD }}
+          server: ${{ env.FTP_SERVER }}
+          port: ${{ env.FTP_PORT }}
+          username: ${{ env.FTP_USERNAME }}
+          password: ${{ env.FTP_PASSWORD }}
           protocol: ftps
           local-dir: dist/
-          server-dir: ${{ secrets.FTP_REMOTE_PATH || secrets.SFTP_REMOTE_PATH }}
+          server-dir: ${{ env.FTP_REMOTE_PATH }}
