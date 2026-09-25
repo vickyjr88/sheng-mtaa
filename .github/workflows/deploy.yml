@@ -71,3 +71,20 @@ jobs:
           # must already exist on the server.
           sftp_only: true
           sftpArgs: '-o ConnectTimeout=15'
+
+      # dist/* is a shell-style glob (confirmed against this action's own
+      # sftp batch script), which never matches dotfiles - .htaccess would
+      # silently never be uploaded by the step above, breaking React
+      # Router's deep links (e.g. /shengs/safocalto) with a 404 on Apache.
+      # Uploaded separately here by its exact name, no glob involved.
+      - name: Deploy .htaccess
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          port: ${{ secrets.SFTP_PORT }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          local_path: dist/.htaccess
+          remote_path: ${{ secrets.SFTP_REMOTE_PATH }}
+          sftp_only: true
+          sftpArgs: '-o ConnectTimeout=15'

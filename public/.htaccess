@@ -1,0 +1,15 @@
+# React Router client-side routing: a request for a deep link like
+# /shengs/safocalto has no matching file on the server, so without this
+# Apache returns a 404 instead of letting index.html load and React
+# Router take over. Falls through to real files/directories (assets,
+# favicon, etc.) first, then rewrites everything else to index.html.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  RewriteRule ^ index.html [L]
+</IfModule>
