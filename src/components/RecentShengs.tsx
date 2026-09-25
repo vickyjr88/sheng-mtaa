@@ -18,7 +18,12 @@ export function RecentShengs() {
       <ul className="mt-2 divide-y divide-line">
         {data?.map((sheng) => (
           <li key={sheng.id} className="py-2">
-            <p className="text-sm font-semibold text-ink">{sheng.word}</p>
+            <Link
+              to={`/shengs/${sheng.slug}`}
+              className="text-sm font-semibold text-ink underline decoration-line decoration-2 underline-offset-2 hover:text-brand-600 hover:decoration-brand-500"
+            >
+              {sheng.word}
+            </Link>
             <p className="text-sm text-tan">{sheng.meaning}</p>
           </li>
         ))}

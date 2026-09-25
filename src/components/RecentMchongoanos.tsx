@@ -17,8 +17,13 @@ export function RecentMchongoanos() {
       {error && <ErrorMessage />}
       <ul className="mt-2 divide-y divide-line">
         {data?.map((mchongoano) => (
-          <li key={mchongoano.id} className="py-2 text-sm text-ink-soft">
-            {mchongoano.text}
+          <li key={mchongoano.id} className="py-2">
+            <Link
+              to={`/mchongoanos/${mchongoano.id}`}
+              className="text-sm text-ink-soft underline decoration-line decoration-2 underline-offset-2 hover:text-brand-600 hover:decoration-brand-500"
+            >
+              {mchongoano.text}
+            </Link>
           </li>
         ))}
       </ul>
