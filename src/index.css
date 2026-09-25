@@ -1,13 +1,41 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import "tailwindcss";
+
+@theme {
+  /* Sheng Mtaa brand palette, carried over from shengmtaa.com so the app
+     feels like the same product, with a slightly richer accent scale for
+     UI states (hover/active) the marketing site doesn't need. */
+  --color-ink: #1b150e;
+  --color-ink-soft: #2d2720;
+  --color-tan: #97754e;
+  --color-cream: #fcfaf8;
+  --color-cream-deep: #f3eee7;
+  --color-line: #e7dcd0;
+
+  --color-brand-50: #fff8f0;
+  --color-brand-100: #fdeacc;
+  --color-brand-300: #f0a94e;
+  --color-brand-500: #e58619;
+  --color-brand-600: #d17615;
+  --color-brand-700: #a85e10;
+
+  --font-sans: "Plus Jakarta Sans", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
 }

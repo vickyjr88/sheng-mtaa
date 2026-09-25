@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Sheng Mtaa (web app)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The React front end for [shengmtaa.com](https://shengmtaa.com), deployed at
+[app.shengmtaa.com](https://app.shengmtaa.com). Browse Sheng slang and
+Mchongoano, comment (signed in), and manage your account.
 
-## Available Scripts
+Talks to the same Rails API as the main site and the Android app
+(`sheng-mchongoano-web`'s `/api/private/*` routes) and shares its Firebase
+project for authentication.
 
-In the project directory, you can run:
+## Stack
 
-### `npm start`
+- [Vite](https://vite.dev) + React 19 + TypeScript
+- [React Router](https://reactrouter.com) v6
+- [TanStack Query](https://tanstack.com/query) for data fetching, caching, and infinite scroll
+- [Tailwind CSS](https://tailwindcss.com) v4, matching shengmtaa.com's palette
+- [Firebase Auth](https://firebase.google.com/docs/auth) (email/password)
+- Firebase Hosting for deployment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting started
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm install
+cp .env.example .env.local
+# fill in .env.local with real values (see below)
+npm run dev
+```
 
-### `npm test`
+### Environment variables
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+See `.env.example` for the full list. You'll need:
 
-### `npm run build`
+- `VITE_API_BASE_URL` — the Rails API origin (e.g. `https://shengmtaa.com`
+  in production, or your local Rails server for development).
+- The Firebase web config values, from the Firebase console for the
+  `sheng-mchongoano` project (Project settings → General → Your apps).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Scripts
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `npm run dev` — start the Vite dev server
+- `npm run build` — typecheck and build for production (outputs to `dist/`)
+- `npm run preview` — preview the production build locally
+- `npm run lint` — run Oxlint
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+Deployed via Firebase Hosting (`firebase.json` points at `dist/`):
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm run build
+firebase deploy --only hosting
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Known backend limitations
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+A couple of things the API itself constrains, not fixable from this repo
+alone:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `GET /api/private/v2/users/:slug` only returns a profile when `:slug`
+  matches the signed-in caller's own account — it 400s for anyone else's.
+  `UserPage` handles this with a friendly message rather than an error, but
+  viewing another member's public profile isn't actually possible until
+  the backend allows it.
+- Comment creation (`POST /api/private/v2/comments`) requires a
+  client-supplied `user_id` (`Comment belongs_to :user`, validated) rather
+  than deriving it from the authenticated request. This app sends the
+  signed-in user's own id, which is safe since it comes from their
+  verified session — but the endpoint itself doesn't enforce that the id
+  matches the caller, so this is worth hardening server-side at some
+  point.
